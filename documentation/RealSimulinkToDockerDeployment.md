@@ -205,6 +205,10 @@
     EXECUTE xhost + ON THE HOST MACHINE TO VIEW CONTAINER GRAPHICS
     ```
 
+    |        **Copied files**         |
+    |:-------------------------------:|
+    |![image](./images/FullDeploy.png) |
+
 7. Test the Docker Image
 
     ```console
