@@ -42,13 +42,15 @@
 
     - Products installed in our case:
 
-        |     **Product**     | **Is Installed** |
-        |:-------------------:|:----------------:|
-        |   Matlab Compiler   |         X        |
-        | Matlab Compiler SDK |         X        |
-        |       Simulink      |         X        |
-        |    Simulink Coder   |         X        |
-        |  Simulink Compiler  |         X        |
+        |       **Product**       | **Is Installed** |
+        |:-----------------------:|:----------------:|
+        |     MATLAB Compiler     |         X        |
+        |       MATLAB Coder      |         X        |
+        |   MATLAB Compiler SDK   |         X        |
+        | MATLAB Report Generator |         X        |
+        |     Mapping Toolbox     |         X        |
+        |         Simulink        |         X        |
+        |    Simulink Compiler    |         X        |
 
     > **Note**: It is possible that you don’t have sudo privileges, in which case, the installer will refuse to select /usr/local/ as the destination folder. In that case, you choose /home/ as your destination folder and so no to creating symbolic links.
 
