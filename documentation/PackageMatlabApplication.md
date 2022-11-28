@@ -48,8 +48,58 @@ This example shows how to package a MATLAB® standalone application into a Docke
           Options: [1×1 compiler.build.StandaloneApplicationOptions]
     ```
 
-    - Once the build is complete, the function creates a folder named `mymagicstandaloneApplication` in your current directory to store the standalone application. The Results object res returned at the MATLAB command prompt contains information about the build.
+    - Once the build is complete, the function creates a folder named `mymagicstandaloneApplication` in your current directory to store the standalone application. The Results object `res` returned at the MATLAB command prompt contains information about the build. See *after compilation image*
 
-    |       **Before compilation**       |        **After compilation**       |      **After Docker Creation**      |
-    |:----------------------------------:|:----------------------------------:|:-----------------------------------:|
-    |![image](./images/matlab_before.png)| ![image](./images/matlab_after.png)| ![image](./images/matlab_medium.png)|
+4. Package Standalone Application into Docker Image
+
+    - Create DockerOptions Object
+
+      - Prior to creating a Docker image, create a DockerOptions object using the [compiler.package.DockerOptions](https://es.mathworks.com/help/compiler/compiler.package.dockeroptions.html) function and pass the Results object res and an image name mymagic-standalone-app as input arguments. The compiler.package.DockerOptions function lets you customize Docker image packaging. See *after Docker creation image*
+
+    ```console
+    opts = compiler.package.DockerOptions(res,'ImageName','mymagic-standalone-app')
+    ```
+
+    - Expected Output:
+
+    ```console
+    opts = 
+      DockerOptions with properties:
+
+                EntryPoint: 'mymagic'
+        ExecuteDockerBuild: on
+                 ImageName: 'mymagic-standalone-app'
+             DockerContext: './mymagic-standalone-appdocker'
+    ```
+
+    - Create Docker Image
+      - Create a Docker image using the [compiler.package.docker](https://es.mathworks.com/help/compiler/compiler.package.docker.html) function and pass the Results object res and the DockerOptions object opts as input arguments.
+
+    ```console
+    compiler.package.docker(res, 'Options', opts)
+    ```
+
+    - Expected Output:
+
+    ```console
+    Generating Runtime Image
+    Cleaning MATLAB Runtime installer location. It may take several minutes...
+    Copying MATLAB Runtime installer. It may take several minutes...
+    ...
+    ...
+    ...
+    Successfully built 6501fa2bc057
+    Successfully tagged mymagic-standalone-app:latest
+
+    DOCKER CONTEXT LOCATION:
+
+    /home/user/MATLAB/work/mymagic-standalone-appdocker
+
+    SAMPLE DOCKER RUN COMMAND:
+
+    docker run --rm -e "DISPLAY=:0" -v /tmp/.X11-unix:/tmp/.X11-unix mymagic-standalone-app
+    ```
+
+|       **Before compilation**       |        **After compilation**       |      **After Docker Creation**      |
+|:----------------------------------:|:----------------------------------:|:-----------------------------------:|
+|![image](./images/matlab_before.png)| ![image](./images/matlab_after.png)| ![image](./images/matlab_medium.png)|
