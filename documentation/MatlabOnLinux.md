@@ -10,11 +10,13 @@
 
 2. Downloading MATLAB
 
-    To download MATLAB, click the [“Install MATLAB on your computer”](https://in.mathworks.com/downloads/web_downloads/10192509) and then “Download for Linux”.
+    - To download MATLAB, click the [“Install MATLAB on your computer”](https://in.mathworks.com/downloads/web_downloads/10192509) and then “Download for Linux”.
 
     ![image](./images/Matlab_Linux_download-768x435.png.webp)
 
-    This will download a zip file that contains your MATLAB software.
+    - This will download a zip file that contains your MATLAB software.
+
+    - In our case the selected version is `R2022a`.
 
 3. Install MATLAB
 
@@ -58,3 +60,27 @@
 
     ![image](./images/Mathworks_Product_Installer-768x589.png.webp)
 
+4. Launch MATLAB
+
+    - If you made symbolic links during the installation, you can launch Matlab by simply typing matlab in terminal.
+
+    - If you cannot make [symbolic links](https://www.linuxfordevices.com/tutorials/ubuntu/create-symbolic-links-in-ubuntu-linux), then all the launch scripts are placed in the /bin/ folder where you installed MATLAB.
+
+    - To launch MATLAB. Go to the bin folder of the destination directory and execute the following.
+
+    ```console
+    cd ~/MATLAB/R2022a/bin/
+    ./matlab
+    ```
+
+    > **Note**: You may not want to browse to this folder and execute .matlab every time you have to start MATLAB. In that case, you can make an alias (like the one shown below) and add it to ~/.bashrc
+
+    ```console
+    alias matlab="~/matlab/bin/matlab"
+    ```
+
+    ![image](./images/matlab_alias-768x656.png)
+
+    - Finally, you have installed MATLAB and can start working on it.
+
+    ![image](./images/Installed_matlab-1024x567.png)
