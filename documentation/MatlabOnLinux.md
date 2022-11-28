@@ -24,13 +24,13 @@
 
     ```console
     mkdir MATLAB
-    unzip matlab_R2022a_glnxa64.zip -d MATLAB
+    unzip matlab_R2022a_glnxa64.zip -d matlab_R2022a_glnxa64
     ```
 
     - Now, go to the folder in which you unzipped all the files and execute the install script:
 
     ```console
-    cd MATLAB
+    cd ~/matlab_R2022a_glnxa64/
     ./install 
     ```
 
@@ -76,7 +76,7 @@
     > **Note**: You may not want to browse to this folder and execute .matlab every time you have to start MATLAB. In that case, you can make an alias (like the one shown below) and add it to ~/.bashrc
 
     ```console
-    alias matlab="~/matlab/bin/matlab"
+    alias matlab="~/MATLAB/R2022a/bin/matlab"
     ```
 
     ![image](./images/matlab_alias-768x656.png)
