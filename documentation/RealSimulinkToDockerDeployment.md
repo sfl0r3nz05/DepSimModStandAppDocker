@@ -20,7 +20,7 @@
     |:-------------------------------:|
     |![image](./images/RunScript.png) |
 
-3. Test the `RunScript` function:
+3. Test the `RunScript` function on the Matlab cmd:
 
     ```console
     RunScript()
