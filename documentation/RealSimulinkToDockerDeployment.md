@@ -116,7 +116,6 @@
 
 6. Create a Docker Image
 
-
     ```console
     compiler.package.docker(res, 'Options', opts)
     ```
@@ -204,4 +203,43 @@
     docker run --rm -e "DISPLAY=:0" -v /tmp/.X11-unix:/tmp/.X11-unix wwtp
 
     EXECUTE xhost + ON THE HOST MACHINE TO VIEW CONTAINER GRAPHICS
+    ```
+
+7. Test the Docker Image
+
+    ```console
+    docker images
+    ```
+
+    - Expected Output:
+
+    ```console
+    REPOSITORY                                      TAG           IMAGE ID            CREATED             SIZE
+    wwtp                                            latest        819f8be5e2ac        39 hours ago        3.22GB
+    matlabruntime/r2022a/update5/e000000000000200   latest        c6eb5ba4ae69        24 hours ago        1.03GB
+    ```
+
+8. Run the `wwtp` image:
+
+    ```console
+    docker run --rm -e "DISPLAY=:0" -v /tmp/.X11-unix:/tmp/.X11-unix wwtp
+    ```
+
+    - Expected Output:
+
+    ```console
+             0         0
+        0.0100    0.0040
+        0.0200    0.0146
+        0.0300    0.0302
+        0.0400    0.0491
+        0.0500    0.0704
+        0.0600    0.0930
+        0.0700    0.1163
+        0.0800    0.1396
+        0.0900    0.1626
+        0.1000    0.1848
+        ......    ......
+        ......    ......
+        ......    ...... 
     ```

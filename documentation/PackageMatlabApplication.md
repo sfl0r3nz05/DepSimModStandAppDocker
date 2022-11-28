@@ -116,8 +116,8 @@ This example shows how to package a MATLAB® standalone application into a Docke
 
     ```console
     REPOSITORY                                      TAG           IMAGE ID            CREATED             SIZE
-    mymagic-standalone-app                          latest        6501fa2bc057        23 seconds ago      1.03GB
-    matlabruntime/r2022b/update0/4000000000000000   latest        c6eb5ba4ae69        24 hours ago        1.03GB
+    mymagic-standalone-app                          latest        6501fa2bc057        2 days ago      1.43GB
+    matlabruntime/r2022a/update5/2000000000000000   latest        c6eb5ba4ae69        2 days ago        1.43GB
     ```
 
    - After verifying that the mymagic-standalone-app Docker image is listed in your list of Docker images, execute the sample run command with the input argument 5:
