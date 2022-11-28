@@ -48,7 +48,7 @@ This example shows how to package a MATLAB® standalone application into a Docke
           Options: [1×1 compiler.build.StandaloneApplicationOptions]
     ```
 
-    - Once the build is complete, the function creates a folder named `mymagicstandaloneApplication` in your current directory to store the standalone application. The Results object `res` returned at the MATLAB command prompt contains information about the build. See *after compilation image*
+    - Once the build is complete, the function creates a folder named `mymagicstandaloneApplication` in your current directory to store the standalone application. The Results object `res` returned at the MATLAB command prompt contains information about the build. See *after compilation image*.
 
 4. Package Standalone Application into Docker Image
 
@@ -100,6 +100,11 @@ This example shows how to package a MATLAB® standalone application into a Docke
     docker run --rm -e "DISPLAY=:0" -v /tmp/.X11-unix:/tmp/.X11-unix mymagic-standalone-app
     ```
 
-|       **Before compilation**       |        **After compilation**       |      **After Docker Creation**      |
-|:----------------------------------:|:----------------------------------:|:-----------------------------------:|
-|![image](./images/matlab_before.png)| ![image](./images/matlab_after.png)| ![image](./images/matlab_medium.png)|
+   - Once packaging is complete, the function creates a folder named mymagic-standalone-appdocker in your current directory. This folder is the Docker context and contains the *Dockerfile*.  See *Dockerfile visualization image*.
+   - The compiler.package.docker function also returns the location of the Docker context and a sample Docker run command. You can use the sample Docker run command to test whether your image executes correctly.
+   - During the packaging process, the necessary bits for MATLAB Runtime are packaged as a parent Docker image and the standalone application is packaged as a child Docker image.
+
+
+|       **Before compilation**       |        **After compilation**       |      **After Docker Creation**      |      **Dockerfile Visualization**       |
+|:----------------------------------:|:----------------------------------:|:-----------------------------------:|:---------------------------------------:|
+|![image](./images/matlab_before.png)| ![image](./images/matlab_after.png)| ![image](./images/matlab_medium.png)| ![image](./images/matlab_dockerfile.png)|
