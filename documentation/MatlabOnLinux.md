@@ -35,3 +35,24 @@
     - This will prompt an installation wizard asking you to log in.
 
     ![image](./images/Matlab_Installer-768x712.png)
+
+    - After entering the email and password, you will be asked to select your license, select the destination folder, the products you want to install, and whether you want to create symbolic links in the root directory.
+
+    ![image](./images/Destination_folder_matlab-768x583.png.webp)
+
+    - Products installed in our case:
+
+        |     **Product**     | **Is Installed** |
+        |:-------------------:|:----------------:|
+        |   Matlab Compiler   |         X        |
+        | Matlab Compiler SDK |         X        |
+        |       Simulink      |         X        |
+        |    Simulink Coder   |         X        |
+        |  Simulink Compiler  |         X        |
+
+    > **Note**: It is possible that you don’t have sudo privileges, in which case, the installer will refuse to select /usr/local/ as the destination folder. In that case, you choose /home/ as your destination folder and so no to creating symbolic links.
+
+    - After everything is done, it will install the product.
+
+    ![image](./images/Mathworks_Product_Installer-768x589.png.webp)
+
