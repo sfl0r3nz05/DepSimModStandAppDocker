@@ -8,6 +8,10 @@ The following repository is intended to document the procedure to deploy a Simul
 4. [Deploy Simulink Model](./documentation/SimuDockerDep.md). **[Optional: only for testing purposes]**.
 5. [Deploy Simulink Model with S-Fuctions](./documentation/SimS-FunctDockerDep.md) **[Required]**
 
+## Add-on
+
+1. [Model Execution time](./documentation/ExecutionTime.md)
+
 ## To-do
 
 1. [Create Microservice Docker Image](https://es.mathworks.com/help/compiler_sdk/mps_dev_test/create-a-microservice-docker-image.html)
