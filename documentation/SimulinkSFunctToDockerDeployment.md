@@ -17,8 +17,32 @@ This tutorial help to compile and containerize the next Simulink Project:
     ```
 
 5. Go to the `wwtp` folder inside of Matlab.
-6. 
-7. Test the `RunScript` function on the Matlab cmd:
+6. Compile the Matlab S-Function:
+
+    ```console
+    mex DN_process.c
+    ```
+
+    - Expected Output:
+
+    ```console
+    Building with 'gcc'.
+    Mex completed successfully.
+    ```
+
+    - The output file: `DN_process.mexa64` is also generated.
+
+7. Load in Matlab environment the ini_DN.m variables:
+
+    ```console
+    ini_DN
+    ```
+
+    - Expected Output:
+
+    ![img](./images/ini_DN.png)
+
+8. Test the `RunScript` function on the Matlab cmd:
 
     ```console
     RunScript()
