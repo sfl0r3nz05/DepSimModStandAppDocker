@@ -2,7 +2,7 @@
 
 This tutorial help to compile and containerize the next Simulink Project:
 
-    ![img](./images/wwtp.png)
+![img](./images/wwtp.png)
 
 ## Create the Docker container **[On the VM where Matlab is installed]**
 
@@ -17,7 +17,8 @@ This tutorial help to compile and containerize the next Simulink Project:
     ```
 
 5. Go to the `wwtp` folder inside of Matlab.
-6. Test the `RunScript` function on the Matlab cmd:
+6. 
+7. Test the `RunScript` function on the Matlab cmd:
 
     ```console
     RunScript()
