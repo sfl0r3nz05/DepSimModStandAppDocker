@@ -180,4 +180,6 @@ This tutorial help to compile and containerize the next Simulink Project:
 
 14. Full project overview:
 
-    ![img](./images/full_proj.png)
+    |        ![img](./images/full_proj.png)        |
+    |:--------------------------------------------:|
+    |          **Full Project Overview**           |
