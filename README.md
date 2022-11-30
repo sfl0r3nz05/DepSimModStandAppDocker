@@ -4,8 +4,9 @@ The following repository is intended to document the procedure to deploy a Simul
 
 1. [Deployment basic requirements](./documentation/BasicReq.md). **[Required]**
 2. [Install Matlab on Linux OS](./documentation/MatlabOnLinux.md). **[Required]**
-3. [Test the deployment](./documentation/PackageMatlabApplication.md). **[Optional: for testing purposes only]*
-4. [Deploy Real Simulink Model](./documentation/RealSimulinkToDockerDeployment.md). **[Required]**
+3. [Test the deployment](./documentation/PackageMatlabApplication.md). **[Optional: only for testing purposes]**
+4. [Deploy Simulink Model](./documentation/SimulinkToDockerDeployment.md). **[Optional: only for testing purposes]**.
+5. [Deploy Simulink Model with S-Fuctions](./documentation/SimulinkSFunctToDockerDeployment.md.md) **[Required]**
 
 ## To-do
 
