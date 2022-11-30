@@ -1,30 +1,57 @@
-# Simulink Project To Docker Deployment
+# Simulink Project with S-Function To Docker Deployment
+
+This tutorial help to compile and containerize the next Simulink Project:
+
+![img](./images/wwtp.png)
 
 ## Create the Docker container **[On the VM where Matlab is installed]**
 
-1. Create a folder for the model deployment: `mkdir ~/matlab_model/RunScript`.
-2. Clone this repository.
-3. Go to the project folder: `cd ~/DepSimModStandAppDocker/src/simple_simulink_proj`.
-4. Copy the `.slx` and `.m`. *See copied files image*.
-
-    ```console
-    cp ~/DepSimModStandAppDocker/src/simple_simulink_proj/*.slx ~/matlab_model/RunScript
-    cp ~/DepSimModStandAppDocker/src/simple_simulink_proj/*.m ~/matlab_model/RunScript
-    ```
-
-    |        **Copied files**         |
-    |:-------------------------------:|
-    |![image](./images/RunScript.png) |
-
-5. Open Matlab considering same folder established in the [installation tutorial](./MatlabOnLinux.md):
+1. Clone this repository.
+2. Go to the `src` folder: `cd ~/DepSimModStandAppDocker/src`.
+3. Copy the `wwtp` folder in the `~/matlab_model/` folder: `cp ./wwtp ~/matlab_model/`.
+4. Open Matlab considering same folder established in the [installation tutorial](./MatlabOnLinux.md):
 
     ```console
     cd ~/MATLAB/R2022a/bin/
     cp ./matlab`
     ```
 
-6. Go to the `RunScript` folder inside of Matlab.
-7. Test the `RunScript` function on the Matlab cmd:
+5. Go to the `wwtp` folde
+6. r inside of Matlab.
+7. Compile the Matlab S-Function:
+
+    ```console
+    mex DN_process.c
+    ```
+
+    - Expected Output:
+
+    ```console
+    Building with 'gcc'.
+    Mex completed successfully.
+    ```
+
+    - The output file: `DN_process.mexa64` is generated.
+
+8. Load in Matlab environment the ini_DN.m variables:
+
+    ```console
+    ini_DN
+    ```
+
+    - Expected Output:
+
+    ![img](./images/ini_DN.png)
+
+9. Open the `.slx` file in Simulink and *Run* it in order to generate the `slprj` folder.
+
+    - Expected Output:
+
+    ![img](./images/slprj.png)
+
+    - Close the window after the simulation finish.
+
+10. Test the `RunScript` function on the Matlab cmd:
 
     ```console
     RunScript()
@@ -34,72 +61,55 @@
 
     ```console
     >> RunScript()
-    ### Building the rapid accelerator target for model: Modelo_Simulink_2021b
-    ### Successfully built the rapid accelerator target for model: Modelo_Simulink_2021b
-
-    Build Summary
-
-    Top model rapid accelerator targets built:
-
-    Model                  Action                       Rebuild Reason                                    
-    ======================================================================================================
-    Modelo_Simulink_2021b  Code generated and compiled  Code generation information file does not exist.  
-
-    1 of 1 models built (0 models already up to date)
-    Build duration: 0h 0m 25.231s
-
-    ans =
-
-             0         0
-        0.0100    0.0040
-        0.0200    0.0146
-        0.0300    0.0302
-        0.0400    0.0491
-        0.0500    0.0704
-        0.0600    0.0930
-        0.0700    0.1163
-        0.0800    0.1396
-        0.0900    0.1626
-        0.1000    0.1848
-        ......    ......
-        ......    ......
-        ......    ......        
+    0.0012
+    0.0012
+    0.0012
+    0.0012
+    0.0012
+    0.0012
+    0.0012
+    0.0012
+    0.0012
+    0.0012
+    0.0012
+    0.0012
+    0.0012
+    0.0012
+    0.0012
+    0.0012
+    0.0012
+    0.0012
+    ......
+    ......
+    ......
     ```
 
-8. Launch the `RunScript.m` compilation:
+11. Launch the `RunScript.m` compilation including the `AdditionalFiles` property:
 
     ```console
-    res = compiler.build.standaloneApplication('RunScript.m', 'TreatInputsAsNumeric', true)
+    res = compiler.build.standaloneApplication('RunScript.m', 'TreatInputsAsNumeric', true, 'AdditionalFiles', ["ini_DN.m","Input_Data.mat"])
     ```
 
     - Expected Output:
 
     ```console
-    ### Building the rapid accelerator target for model: Modelo_Simulink_2021b
-    ### Successfully built the rapid accelerator target for model: Modelo_Simulink_2021b
 
     Build Summary
 
-    Top model rapid accelerator targets built:
-
-    Model                  Action                       Rebuild Reason                                    
-    ======================================================================================================
-    Modelo_Simulink_2021b  Code generated and compiled  Code generation information file does not exist.  
-
-    1 of 1 models built (0 models already up to date)
-    Build duration: 0h 0m 24.251s
+    0 of 1 models built (1 models already up to date)
+    Build duration: 0h 0m 3.5325s
 
     res = 
 
-      Results with properties:
+    Results with properties:
 
                       BuildType: 'standaloneApplication'
                           Files: {3×1 cell}
         IncludedSupportPackages: {}
-                        Options: [1×1 compiler.build.StandaloneApplicationOptions]       
+                        Options: [1×1 compiler.build.StandaloneApplicationOptions]
     ```
 
-9. Package Standalone Application into Docker Image:
+12. Package Standalone Application into Docker Image:
 
     ```console
     opts = compiler.package.DockerOptions(res, 'ImageName', 'wwtp')
@@ -114,11 +124,11 @@
 
                 EntryPoint: 'RunScript'
         ExecuteDockerBuild: on
-                 ImageName: 'wwtp'
-             DockerContext: './wwtpdocker'       
+                 ImageName: 'sflorenz05/wwtp'
+             DockerContext: './sflorenz05/wwtpdocker'    
     ```
 
-10. Create a Docker Image
+13. Create a Docker Image
 
     ```console
     compiler.package.docker(res, 'Options', opts)
@@ -127,131 +137,47 @@
     - Expected Output:
 
     ```console
-    Generating Runtime Image
-    Runtime Base Image Already Exists
-    Cleaning MATLAB Runtime installer location. It may take several minutes...
-    Installing ...
-    (Nov 26, 2022 14:12:52) ##################################################################
-    (Nov 26, 2022 14:12:52) #
-    (Nov 26, 2022 14:12:52) # Today's Date: 
-    (Nov 26, 2022 14:12:52) Sat Nov 26 14:12:52 EST 2022
-    (Nov 26, 2022 14:12:52) 
-    (Nov 26, 2022 14:12:52) System Info
-    (Nov 26, 2022 14:12:52) OS: Linux 5.15.0-53-generic
-    (Nov 26, 2022 14:12:52) Arch: amd64
-    (Nov 26, 2022 14:12:52) Data Model: 64
-    (Nov 26, 2022 14:12:52) Language: en
-    (Nov 26, 2022 14:12:52) Java Vendor: Oracle Corporation
-    (Nov 26, 2022 14:12:52) Java Home: /tmp/ubuntu/matlabruntime/docker/r2022a/release/update5/installer/sys/java/jre/glnxa64/jre
-    (Nov 26, 2022 14:12:52) Java Version: 1.8.0_202
-    (Nov 26, 2022 14:12:52) Java VM Name: Java HotSpot(TM) 64-Bit Server VM
-    (Nov 26, 2022 14:12:52) Release Description: R2022a_Update_5
-    (Nov 26, 2022 14:12:52) Java Class Path: /tmp/ubuntu/matlabruntime/docker/r2022a/release/update5/installer/java/config/installagent/pathlist.jar
-    (Nov 26, 2022 14:12:52) User Name: ubuntu
-    (Nov 26, 2022 14:12:52) Current Directory: /home/ubuntu/matlab_model/RunScript
-    (Nov 26, 2022 14:12:52) Input arguments: 
-    (Nov 26, 2022 14:12:52) root /tmp/ubuntu/matlabruntime/docker/r2022a/release/update5/installer
-    (Nov 26, 2022 14:12:52) libdir /tmp/ubuntu/matlabruntime/docker/r2022a/release/update5/installer
-    (Nov 26, 2022 14:12:52) destinationFolder /tmp/ubuntu/matlabruntime/docker/r2022a/release/update5/e0000000000000200
-    (Nov 26, 2022 14:12:52) product.MATLAB_Runtime___Core true
-    (Nov 26, 2022 14:12:52) product.MATLAB_Runtime___Non_Interactive_MATLAB true
-    (Nov 26, 2022 14:12:52) product.MATLAB_Runtime___Numerics true
-    (Nov 26, 2022 14:12:52) product.MATLAB_Runtime___Rapid_Accelerator true
-    (Nov 26, 2022 14:12:52) agreeToLicense yes   
-    ............................................................................................................................................................
-    ............................................................................................................................................................
-    ............................................................................................................................................................
-
-    Step 1/3 : FROM matlabruntimebase/r2022a/release/update5
-     ---> d568a1ded9cd
-    Step 2/3 : COPY ./v912 /opt/matlabruntime/v912
-     ---> 7cf9de3ac93f
-    Step 3/3 : ENV LD_LIBRARY_PATH /opt/matlabruntime/v912/runtime/glnxa64:/opt/matlabruntime/v912/bin/glnxa64:/opt/matlabruntime/v912/sys/os/glnxa64:/opt/matlabruntime/v912/sys/  opengl/lib/glnxa64:/opt/matlabruntime/v912/extern/bin/glnxa64
-     ---> Running in 75b83a482187
-    Removing intermediate container 75b83a482187
-     ---> dc12891158c3
-    Successfully built dc12891158c3
-    Successfully tagged matlabruntime/r2022a/release/update5/e0000000000000200:latest
-    Sending build context to Docker daemon  292.9kB
+    Runtime Image Already Exists
+    Sending build context to Docker daemon  557.1kB
+    Sending build context to Docker daemon  4.456MB
+    Sending build context to Docker daemon  8.356MB
+    Sending build context to Docker daemon   11.1MB
 
 
     Step 1/6 : FROM matlabruntime/r2022a/release/update5/e0000000000000200
      ---> dc12891158c3
     Step 2/6 : COPY ./applicationFilesForMATLABCompiler /usr/bin/mlrtapp
-     ---> 554cef186ab0
+     ---> 4f44e9169b92
     Step 3/6 : RUN chmod -R a+rX /usr/bin/mlrtapp/*
-     ---> Running in b8dd6cfc796e
-    Removing intermediate container b8dd6cfc796e
-     ---> c1c6e8b4a773
+     ---> Running in 6b4a3b40dcc5
+    Removing intermediate container 6b4a3b40dcc5
+     ---> 4c7c29a2253f
     Step 4/6 : RUN useradd -ms /bin/bash appuser
-     ---> Running in 6582101336d3
-    Removing intermediate container 6582101336d3
-     ---> 1f006a5251a0
+     ---> Running in bea321274686
+    Removing intermediate container bea321274686
+     ---> 93744760564e
     Step 5/6 : USER appuser
-     ---> Running in 2eed638f398c
-    Removing intermediate container 2eed638f398c
-     ---> dc1c7bd5d23e
+     ---> Running in 5abe48e76ae1
+    Removing intermediate container 5abe48e76ae1
+     ---> a1b25420b905
     Step 6/6 : ENTRYPOINT ["/usr/bin/mlrtapp/RunScript"]
-     ---> Running in 31002867e03a
-    Removing intermediate container 31002867e03a
-     ---> 819f8be5e2ac
-    Successfully built 819f8be5e2ac
-    Successfully tagged wwtp:latest
+     ---> Running in 99ad37ccca31
+    Removing intermediate container 99ad37ccca31
+     ---> 63eff14be9e5
+    Successfully built 63eff14be9e5
+    Successfully tagged sflorenz05/wwtp:latest
 
     DOCKER CONTEXT LOCATION:
 
-    /home/ubuntu/matlab_model/RunScript/wwtpdocker
+    /home/ubuntu/matlab_model/TestSFunction/sflorenz05/wwtpdocker
 
     SAMPLE DOCKER RUN COMMAND:
 
-    docker run --rm -e "DISPLAY=:0" -v /tmp/.X11-unix:/tmp/.X11-unix wwtp
+    docker run --rm -e "DISPLAY=:0" -v /tmp/.X11-unix:/tmp/.X11-unix sflorenz05/wwtp
 
-    EXECUTE xhost + ON THE HOST MACHINE TO VIEW CONTAINER GRAPHICS
+    EXECUTE xhost + ON THE HOST MACHINE TO VIEW CONTAINER GRAPHICS.
     ```
 
-    |     **Matlab Project Overview**     |
-    |:-----------------------------------:|
-    |  ![image](./images/FullDeploy.png)  |
+14. Full project overview:
 
-7. Test the Docker Image
-
-    ```console
-    docker images
-    ```
-
-    - Expected Output:
-
-    ```console
-    REPOSITORY                                      TAG           IMAGE ID            CREATED             SIZE
-    wwtp                                            latest        819f8be5e2ac        39 hours ago        3.22GB
-    matlabruntime/r2022a/update5/e000000000000200   latest        c6eb5ba4ae69        24 hours ago        1.03GB
-    ```
-
-8. Run the `wwtp` image:
-
-    ```console
-    docker run --rm -e "DISPLAY=:0" -v /tmp/.X11-unix:/tmp/.X11-unix wwtp
-    ```
-
-    - Expected Output:
-
-    ```console
-             0         0
-        0.0100    0.0040
-        0.0200    0.0146
-        0.0300    0.0302
-        0.0400    0.0491
-        0.0500    0.0704
-        0.0600    0.0930
-        0.0700    0.1163
-        0.0800    0.1396
-        0.0900    0.1626
-        0.1000    0.1848
-        ......    ......
-        ......    ......
-        ......    ...... 
-    ```
-
-    |          **Docker Test Overview**            |
-    |:--------------------------------------------:|
-    |  ![image](./images/FullDeployContainer.png)  |
+    ![img](./images/full_proj.png)
