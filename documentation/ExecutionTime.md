@@ -24,9 +24,10 @@
 - `RunScript` with timer added:
 
     ```console
-    tStart = tic;           % pair 2: tic
-
     function y_out = RunScript()
+
+        tStart = tic;           % pair 2: tic
+
         in = Simulink.SimulationInput('Remedy_WWTP_OL_FMU_2021b');
     
         evalin('base', 'ini_DN');
