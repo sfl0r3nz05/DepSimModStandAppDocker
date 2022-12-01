@@ -31,8 +31,8 @@ This example shows how to create a microservice Docker image.
 
     - *See the *.m file*
 
-    |<img src="./images/matlab_before.png">|
-    |:------------------------------------:|
+        |<img src="./images/matlab_before.png">|
+        |:------------------------------------:|
 
 3. Create Deployable Archive
 
@@ -120,7 +120,7 @@ This example shows how to create a microservice Docker image.
       - *See the packaging image*
 
           |<img src="./images/compilerPackMicro.png">|
-          |:----------------------------------------:|
+          |:---------------------------------------   -:|
 
 6. Test the image:
 
