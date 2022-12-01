@@ -31,8 +31,8 @@ This example shows how to create a microservice Docker image.
 
     - *See the *.m file*
 
-    |:----------------------------------:|
     |![image](./images/matlab_before.png)|
+    |:----------------------------------:|
 
 3. Create Deployable Archive
 
@@ -60,8 +60,8 @@ This example shows how to create a microservice Docker image.
     - Once the build is complete, the function creates a folder named `magicarchiveproductionServerArchive` in your current directory to store the deployable archive.
       - *See the compilation image*
 
-        |:----------------------------------:|
         |![image](./images/compilerBuilt.png)|
+        |:----------------------------------:|
 
 4. Package Archive into Microservice Docker Image
 
@@ -118,8 +118,9 @@ This example shows how to create a microservice Docker image.
    2. `Dockerfile` — Docker file that specifies Docker run-time options.
    3. `GettingStarted.txt` — Text file that contains deployment information.
       - *See the packaging image*
-          |:--------------------------------------:|
+
           |![image](./images/compilerPackMicro.png)|
+          |:--------------------------------------:|
 
 6. Test the image:
 
