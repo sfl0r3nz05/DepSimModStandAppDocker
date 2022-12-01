@@ -170,6 +170,6 @@ This example shows how to create a microservice Docker image.
     {"lhs":[{"mwdata":[16,5,9,4,2,11,7,14,3,10,6,15,13,8,12,1],"mwsize":[4,4],"mwtype":"double"}]}    
     ```
 
-|       **Before compilation**       |        **After compilation**       |      **After Docker Creation**      |      **Dockerfile Visualization**       |
-|:----------------------------------:|:----------------------------------:|:-----------------------------------:|:---------------------------------------:|
-|![image](./images/matlab_before.png)| ![image](./images/matlab_after.png)| ![image](./images/matlab_medium.png)| ![image](./images/matlab_dockerfile.png)|
+|       **Before compilation**       |        **After compilation**       |       **After Docker Creation**        |
+|:----------------------------------:|:----------------------------------:|:--------------------------------------:|
+|![image](./images/matlab_before.png)|![image](./images/compilerBuilt.png)|![image](./images/compilerPackMicro.png)|
