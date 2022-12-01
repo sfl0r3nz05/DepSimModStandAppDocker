@@ -14,12 +14,16 @@ The following repository is intended to document the procedure to deploy a Simul
 |<img src="./documentation/images/CompilerToDocker.png"  width=60% height=60%>|
 |:---------------------------------------------------------------------------:|
 
-1. [Test the deployment](./documentation/PackageMatlabApplication.md). **[Optional: only for testing purposes]**
+1. [Basic function](./documentation/BasicFunctionDocker.md). **[Optional: only for testing purposes]**
 2. [Deploy Simulink Model](./documentation/SimuDockerDep.md). **[Optional: only for testing purposes]**.
 3. [Deploy Simulink Model with S-Fuctions](./documentation/SimS-FunctDockerDep.md) **[Required]**
 
 ## III. From compiler to Microservice
-1. [Test the deployment](./documentation/PackageMatlabApplication.md). **[Optional: only for testing purposes]**
+
+1. [Basic function](./documentation/BasicFunctionRESTDocker.md). **[Optional: only for testing purposes]**
+
+|<img src="./documentation/images/CompilerToRESTToDocker.png"  width=60% height=60%>|
+|:---------------------------------------------------------------------------------:|
 
 ## Add-on
 
