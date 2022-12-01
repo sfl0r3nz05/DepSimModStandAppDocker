@@ -22,7 +22,7 @@ The following repository is intended to document the procedure to deploy a Simul
 
 1. [Basic function](./documentation/BasicFunctionRESTDocker.md). **[Optional: only for testing purposes]**
 
-|<img src="./documentation/images/CompilerToRESTToDocker.png"  width=60% height=60%>|
+|<img src="./documentation/images/CompilerToRESTToDocker.png"  width=70% height=70%>|
 |:---------------------------------------------------------------------------------:|
 
 ## Add-on
