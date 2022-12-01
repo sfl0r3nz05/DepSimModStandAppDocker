@@ -31,7 +31,7 @@ This example shows how to create a microservice Docker image.
 
 3. Create Deployable Archive
 
-   - Package the `mymagic` function into a deployable archive using the [c]ompiler.build.productionServerArchive](https://es.mathworks.com/help/compiler_sdk/mps_dev_test/compiler.build.productionserverarchive.html) function.
+   - Package the `mymagic` function into a deployable archive using the [compiler.build.productionServerArchive](https://es.mathworks.com/help/compiler_sdk/mps_dev_test/compiler.build.productionserverarchive.html) function.
 
     ```console
     mpsResults = compiler.build.productionServerArchive('mymagic.m',...
@@ -51,98 +51,83 @@ This example shows how to create a microservice Docker image.
                         Options: [1×1 compiler.build.ProductionServerArchiveOptions]
     ```
 
-    - The compiler.build.Results object mpsResults contains information on the build type, generated files, included support packages, and build options. Once the build is complete, the function creates a folder named magicarchiveproductionServerArchive in your current directory to store the deployable archive.
+    - The compiler.build.Results object mpsResults contains information on the build type, generated files, included support packages, and build options.
+    - Once the build is complete, the function creates a folder named `magicarchiveproductionServerArchive` in your current directory to store the deployable archive.
 
+4. Package Archive into Microservice Docker Image
 
-
-4. Package Standalone Application into Docker Image
-
-    - Create DockerOptions Object
-
-      - Prior to creating a Docker image, create a DockerOptions object using the [compiler.package.DockerOptions](https://es.mathworks.com/help/compiler/compiler.package.dockeroptions.html) function and pass the Results object res and an image name mymagic-standalone-app as input arguments. The compiler.package.DockerOptions function lets you customize Docker image packaging. See *after Docker creation image*
+   - Build the microservice Docker image using the mpsResults object that you created.
+   - You can specify additional options in the compiler.build command by using name-value arguments.
 
     ```console
-    opts = compiler.package.DockerOptions(res,'ImageName','mymagic-standalone-app')
+    compiler.package.microserviceDockerImage(mpsResults,'ImageName','micro-magic')
+    ```
+
+5. The function generates the following files within a folder named micro-magicmicroserviceDockerImage in your current working directory:
+
+   1. `applicationFilesForMATLABCompiler/magicarchive.ctf` — Deployable archive file.
+   2. `Dockerfile` — Docker file that specifies Docker run-time options.
+   3. `GettingStarted.txt` — Text file that contains deployment information.
+
+6. Test the image:
+
+    ```console
+    docker ps
     ```
 
     - Expected Output:
 
     ```console
-    opts = 
-      DockerOptions with properties:
-
-                EntryPoint: 'mymagic'
-        ExecuteDockerBuild: on
-                 ImageName: 'mymagic-standalone-app'
-             DockerContext: './mymagic-standalone-appdocker'
+    REPOSITORY         TAG             IMAGE ID          CREATED         SIZE
+    micro-magic        latest          8ec697f512af      4 hours ago     1.48GB
     ```
 
-    - Create Docker Image
-      - Create a Docker image using the [compiler.package.docker](https://es.mathworks.com/help/compiler/compiler.package.docker.html) function and pass the Results object res and the DockerOptions object opts as input arguments.
+7. Run the micro-magic microservice image in Docker.
 
     ```console
-    compiler.package.docker(res, 'Options', opts)
+    docker run --rm -p 9900:9910 micro-magic
     ```
 
-    - Expected Output:
+8. Once the microservice container is running in Docker, you can check the status of the service by opening the following URL in a web browser:
 
     ```console
-    Generating Runtime Image
-    Cleaning MATLAB Runtime installer location. It may take several minutes...
-    Copying MATLAB Runtime installer. It may take several minutes...
-    ...
-    ...
-    ...
-    Successfully built 6501fa2bc057
-    Successfully tagged mymagic-standalone-app:latest
-
-    DOCKER CONTEXT LOCATION:
-
-    /home/user/MATLAB/work/mymagic-standalone-appdocker
-
-    SAMPLE DOCKER RUN COMMAND:
-
-    docker run --rm -e "DISPLAY=:0" -v /tmp/.X11-unix:/tmp/.X11-unix mymagic-standalone-app
-    ```
-
-   - Once packaging is complete, the function creates a folder named mymagic-standalone-appdocker in your current directory. This folder is the Docker context and contains the *Dockerfile*.  See *Dockerfile visualization image*.
-   - The compiler.package.docker function also returns the location of the Docker context and a sample Docker run command. You can use the sample Docker run command to test whether your image executes correctly.
-   - During the packaging process, the necessary bits for MATLAB Runtime are packaged as a parent Docker image and the standalone application is packaged as a child Docker image.
-
-5. Test Docker Image
-
-   - Open a Linux terminal and navigate to the Docker context folder. Verify that the mymagic-standalone-app Docker image is listed in your list of Docker images.
-
-    ```console
-    docker images
+    curl http://localhost:9900/api/health
     ```
 
     - Expected Output:
 
     ```console
-    REPOSITORY                                      TAG           IMAGE ID            CREATED             SIZE
-    mymagic-standalone-app                          latest        6501fa2bc057        2 days ago      1.43GB
-    matlabruntime/r2022a/update5/2000000000000000   latest        c6eb5ba4ae69        2 days ago        1.43GB
+    {"status:  ok"}
     ```
 
-   - After verifying that the mymagic-standalone-app Docker image is listed in your list of Docker images, execute the sample run command with the input argument 5:
+9. Test the running service:
 
     ```console
-    docker run --rm -e "DISPLAY=:0" -v /tmp/.X11-unix:/tmp/.X11-unix mymagic-standalone-app 5
+    curl -v -H Content-Type:application/json -d '{"nargout":1,"rhs":[4]}' http://localhost:9900/magicarchive/mymagic
     ```
 
     - Expected Output:
 
     ```console
-    No protocol specified
-
-    out =
-
-        17    24     1     8    15
-        23     5     7    14    16
-         4     6    13    20    22
-        10    12    19    21     3
-        11    18    25     2     9
+    *   Trying 127.0.0.1:9900...
+    * TCP_NODELAY set
+    * Connected to localhost (127.0.0.1) port 9900 (#0)
+    > POST /magicarchive/mymagic HTTP/1.1
+    > Host: localhost:9900
+    > User-Agent: curl/7.68.0
+    > Accept: */*
+    > Content-Type:application/json
+    > Content-Length: 23
+    > 
+    * upload completely sent off: 23 out of 23 bytes
+    * Mark bundle as not supporting multiuse
+    < HTTP/1.1 200 OK
+    < Content-Type: application/json
+    < Content-Length: 94
+    < Connection: Keep-Alive
+    < 
+    * Connection #0 to host localhost left intact
+    {"lhs":[{"mwdata":[16,5,9,4,2,11,7,14,3,10,6,15,13,8,12,1],"mwsize":[4,4],"mwtype":"double"}]}    
     ```
 
 |       **Before compilation**       |        **After compilation**       |      **After Docker Creation**      |      **Dockerfile Visualization**       |
