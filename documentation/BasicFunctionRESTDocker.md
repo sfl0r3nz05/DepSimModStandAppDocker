@@ -63,6 +63,46 @@ This example shows how to create a microservice Docker image.
     compiler.package.microserviceDockerImage(mpsResults,'ImageName','micro-magic')
     ```
 
+    - Expected Output:
+
+    ```console
+    Runtime Image Already Exists
+    Sending build context to Docker daemon  34.82kB
+
+
+    Step 1/6 : FROM matlabruntime/r2022a/release/update5/21000000000000000
+      ---> ad58363ceb4a
+    Step 2/6 : COPY ./applicationFilesForMATLABCompiler /usr/bin/mlrtapp
+      ---> d5bee0724803
+    Step 3/6 : RUN chmod -R a+rX /usr/bin/mlrtapp/*
+      ---> Running in fcfebc2cff44
+    Removing intermediate container fcfebc2cff44
+      ---> f1fafe2cc595
+    Step 4/6 : RUN useradd -ms /bin/bash appuser
+      ---> Running in fe85c3cc0c67
+    Removing intermediate container fe85c3cc0c67
+      ---> ff1ce2305910
+    Step 5/6 : USER appuser
+      ---> Running in 6b976bfd4b18
+    Removing intermediate container 6b976bfd4b18
+      ---> dc0fba8b0a53
+    Step 6/6 : ENTRYPOINT ["/opt/matlabruntime/v912/bin/glnxa64/muserve", "-a", "/usr/bin/mlrtapp/magicarchive.ctf"]
+      ---> Running in b686805c0d56
+    Removing intermediate container b686805c0d56
+      ---> 8ec697f512af
+    Successfully built 8ec697f512af
+    Successfully tagged micro-magic-v4:latest
+
+    DOCKER CONTEXT LOCATION:
+
+    /home/ubuntu/matlab_model/TestModel/micro-magic-v4microserviceDockerImage
+
+
+    FOR HELP GETTING STARTED WITH MICROSERVICE IMAGES, PLEASE READ:
+
+    /home/ubuntu/matlab_model/TestModel/micro-magic-v4microserviceDockerImage/GettingStarted.txt
+    ```
+
 5. The function generates the following files within a folder named micro-magicmicroserviceDockerImage in your current working directory:
 
    1. `applicationFilesForMATLABCompiler/magicarchive.ctf` — Deployable archive file.
