@@ -29,6 +29,11 @@ This example shows how to create a microservice Docker image.
     11    18    25     2     9
     ```
 
+    - *See the *.m file*
+
+    |:----------------------------------:|
+    |![image](./images/matlab_before.png)|
+
 3. Create Deployable Archive
 
    - Package the `mymagic` function into a deployable archive using the [compiler.build.productionServerArchive](https://es.mathworks.com/help/compiler_sdk/mps_dev_test/compiler.build.productionserverarchive.html) function.
@@ -53,6 +58,10 @@ This example shows how to create a microservice Docker image.
 
     - The compiler.build.Results object mpsResults contains information on the build type, generated files, included support packages, and build options.
     - Once the build is complete, the function creates a folder named `magicarchiveproductionServerArchive` in your current directory to store the deployable archive.
+      - *See the compilation image*
+
+        |:----------------------------------:|
+        |![image](./images/compilerBuilt.png)|
 
 4. Package Archive into Microservice Docker Image
 
@@ -108,6 +117,9 @@ This example shows how to create a microservice Docker image.
    1. `applicationFilesForMATLABCompiler/magicarchive.ctf` — Deployable archive file.
    2. `Dockerfile` — Docker file that specifies Docker run-time options.
    3. `GettingStarted.txt` — Text file that contains deployment information.
+      - *See the packaging image*
+          |:--------------------------------------:|
+          |![image](./images/compilerPackMicro.png)|
 
 6. Test the image:
 
@@ -169,7 +181,3 @@ This example shows how to create a microservice Docker image.
     * Connection #0 to host localhost left intact
     {"lhs":[{"mwdata":[16,5,9,4,2,11,7,14,3,10,6,15,13,8,12,1],"mwsize":[4,4],"mwtype":"double"}]}    
     ```
-
-|       **Before compilation**       |        **After compilation**       |       **After Docker Creation**        |
-|:----------------------------------:|:----------------------------------:|:--------------------------------------:|
-|![image](./images/matlab_before.png)|![image](./images/compilerBuilt.png)|![image](./images/compilerPackMicro.png)|
