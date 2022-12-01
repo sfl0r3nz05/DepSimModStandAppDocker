@@ -1,6 +1,6 @@
 # Create Microservice Docker Image
 
-This example shows how to package a MATLAB® standalone application into a Docker image.
+This example shows how to create a microservice Docker image.
 
 1. Create a folder for test: `mkdir ~/matlab_model/TestModel`
 2. Create Function in MATLAB on `TestModel` folder. See *before compilation image*
@@ -8,9 +8,9 @@ This example shows how to package a MATLAB® standalone application into a Docke
     - Write a MATLAB function called `mymagic` and save it with the file name `mymagic.m`.
 
     ```console
-    function mymagic(x)
-    y = magic(x);
-    disp(y)
+    function y = mymagic(x)
+        y = magic(x);
+    end
     ```
 
     - Test the function at the MATLAB command prompt.
@@ -29,26 +29,31 @@ This example shows how to package a MATLAB® standalone application into a Docke
     11    18    25     2     9
     ```
 
-3. Create Standalone Application
+3. Create Deployable Archive
 
-   - Make the `mymagic` function into a standalone application using the [compiler.build.standaloneApplication](https://es.mathworks.com/help/compiler/compiler.build.standaloneapplication.html) function.
+   - Package the `mymagic` function into a deployable archive using the [c]ompiler.build.productionServerArchive](https://es.mathworks.com/help/compiler_sdk/mps_dev_test/compiler.build.productionserverarchive.html) function.
 
     ```console
-    res = compiler.build.standaloneApplication('mymagic.m', 'TreatInputsAsNumeric', true)
+    mpsResults = compiler.build.productionServerArchive('mymagic.m',...
+    'ArchiveName','magicarchive','Verbose','on')
     ```
 
     - Expected Output:
 
     ```console
-    res = 
+    mpsResults = 
+
       Results with properties:
 
-        BuildType: 'standaloneApplication'
-            Files: {3×1 cell}
-          Options: [1×1 compiler.build.StandaloneApplicationOptions]
+                      BuildType: 'productionServerArchive'
+                          Files: {'/home/mluser/Work/magicarchiveproductionServerArchive/magicarchive.ctf'}
+        IncludedSupportPackages: {}
+                        Options: [1×1 compiler.build.ProductionServerArchiveOptions]
     ```
 
-    - Once the build is complete, the function creates a folder named `mymagicstandaloneApplication` in your current directory to store the standalone application. The Results object `res` returned at the MATLAB command prompt contains information about the build. See *after compilation image*.
+    - The compiler.build.Results object mpsResults contains information on the build type, generated files, included support packages, and build options. Once the build is complete, the function creates a folder named magicarchiveproductionServerArchive in your current directory to store the deployable archive.
+
+
 
 4. Package Standalone Application into Docker Image
 
