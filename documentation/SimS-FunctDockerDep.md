@@ -177,7 +177,7 @@ This tutorial help to compile and containerize the next Simulink Project:
     EXECUTE xhost + ON THE HOST MACHINE TO VIEW CONTAINER GRAPHICS.
     ```
 
-14. Full project overview:
+14. Command window sample:
 
     |        ![img](./images/full_proj.png)        |
     |:--------------------------------------------:|
