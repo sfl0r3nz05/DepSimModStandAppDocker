@@ -111,20 +111,20 @@ This tutorial help to compile and containerize the next Simulink Project:
 12. Package Standalone Application into Docker Image:
 
     ```console
-    opts = compiler.package.DockerOptions(res, 'ImageName', 'wwtp')
+    opts = compiler.package.DockerOptions(res, 'ImageName', 'sflorenz05/sample_wwtp')
     ```
 
     - Expected Output:
 
     ```console
-    opts = 
+    opts =
 
       DockerOptions with properties:
 
                 EntryPoint: 'RunScript'
         ExecuteDockerBuild: on
                  ImageName: 'sflorenz05/wwtp'
-             DockerContext: './sflorenz05/wwtpdocker'    
+             DockerContext: './sflorenz05/sample_wwtpdocker'
     ```
 
 13. Create a Docker Image
