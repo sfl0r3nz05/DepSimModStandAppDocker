@@ -16,7 +16,7 @@ This tutorial help to compile and containerize the next Simulink Project:
     ./matlab
     ```
 
-5. Go to the `wwtp` folder inside of Matlab.
+5. Go to the `sample-wwtp` folder inside of Matlab.
 7. Compile the Matlab S-Function:
 
     ```console
