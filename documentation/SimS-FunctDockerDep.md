@@ -13,11 +13,10 @@ This tutorial help to compile and containerize the next Simulink Project:
 
     ```console
     cd ~/MATLAB/R2022a/bin/
-    cp ./matlab`
+    ./matlab
     ```
 
-5. Go to the `wwtp` folde
-6. r inside of Matlab.
+5. Go to the `wwtp` folder inside of Matlab.
 7. Compile the Matlab S-Function:
 
     ```console

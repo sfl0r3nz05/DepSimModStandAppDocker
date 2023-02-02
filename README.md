@@ -27,8 +27,11 @@ The following repository is intended to document the procedure to deploy a Simul
 
 ## Add-on
 
-1. [Model Execution time](./documentation/ExecutionTime.md)
+1. [Calculation of model execution time](./documentation/ExecutionTime.md)
 
 ## To-do
 
-1. [Create Microservice Docker Image](https://es.mathworks.com/help/compiler_sdk/mps_dev_test/create-a-microservice-docker-image.html)
+1. [Create Microservice Docker Image for Basic Simulink Model](https://es.mathworks.com/help/compiler_sdk/mps_dev_test/create-a-microservice-docker-image.html)
+2. [Create Microservice Docker Image for Basic Simulink Model with S-Functions](https://es.mathworks.com/help/compiler_sdk/mps_dev_test/create-a-microservice-docker-image.html)
+3. [Deploy the Docker Container for a Real WWTP Model](https://es.mathworks.com/help/compiler_sdk/mps_dev_test/create-a-microservice-docker-image.html)
+4. [Create Microservice Docker Image for a Real WWTP Model](https://es.mathworks.com/help/compiler_sdk/mps_dev_test/create-a-microservice-docker-image.html)
