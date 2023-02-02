@@ -20,7 +20,7 @@
 
     ```console
     cd ~/MATLAB/R2022a/bin/
-    cp ./matlab`
+    ./matlab
     ```
 
 6. Go to the `RunScript` folder inside of Matlab.
