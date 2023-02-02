@@ -8,7 +8,7 @@ This tutorial help to compile and containerize the next Simulink Project:
 
 1. Clone this repository.
 2. Go to the `src` folder: `cd ~/DepSimModStandAppDocker/src`.
-3. Copy the `wwtp` folder in the `~/matlab_model/` folder: `cp ./wwtp ~/matlab_model/`.
+3. Copy the `sample-wwtp` folder in the `~/matlab_model/` folder: `cp ./sample-wwtp ~/matlab_model/`.
 4. Open Matlab considering same folder established in the [installation tutorial](./MatlabOnLinux.md):
 
     ```console
