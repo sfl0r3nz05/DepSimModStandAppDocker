@@ -1,38 +1,9 @@
 # Create Microservice Docker Image
 
-This example shows how to create a microservice Docker image.
+1. Clone the repository: `git clone https://github.com/sfl0r3nz05/DepSimModStandAppDocker.git`
+2. Go into the project folder ``cd ~/DistributedBchFWArchIoT/src/sample-wwtp` using Matlab:
 
-1. Create a folder for test: `mkdir ~/matlab_model/TestModel`
-2. Create Function in MATLAB on `TestModel` folder. See *before compilation image*
-
-    - Write a MATLAB function called `mymagic` and save it with the file name `mymagic.m`.
-
-    ```console
-    function y = mymagic(x)
-        y = magic(x);
-    end
-    ```
-
-    - Test the function at the MATLAB command prompt.
-
-    ```console
-    mymagic(5)
-    ```
-
-    - Expected Output:
-
-    ```console
-    17    24     1     8    15
-    23     5     7    14    16
-     4     6    13    20    22
-    10    12    19    21     3
-    11    18    25     2     9
-    ```
-
-    - *See the *.m file*
-
-        |<img src="./images/matlab_before.png">|
-        |:------------------------------------:|
+   <img width="960" alt="dockerdep4" src="https://user-images.githubusercontent.com/6643905/216677558-f146bf23-0921-408d-8245-08d07cefc671.PNG">
 
 3. Create Deployable Archive
 
