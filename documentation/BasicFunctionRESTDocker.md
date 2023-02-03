@@ -32,7 +32,8 @@ This example shows how to create a microservice Docker image.
     - *See the *.m file*
 
         |<img src="./images/matlab_before.png">|
-        |:------------------------------------:|
+        |--------------------------------------|
+        |     After Built Docker Image         |
 
 3. Create Deployable Archive
 
