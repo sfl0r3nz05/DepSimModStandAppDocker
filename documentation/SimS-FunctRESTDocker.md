@@ -72,7 +72,7 @@
     - Once the build is complete, the function creates a folder named `sample_wwtpproductionServerArchive` in your current directory to store the deployable archive.
       - *See the compilation image*
 
-        |<img width="213" alt="dockerdep4" src="https://user-images.githubusercontent.com/6643905/216682017-024835be-0792-4d45-a1e3-bcb4f868e5c2.PNG">|
+        |<img width="426" alt="dockerdep4" src="https://user-images.githubusercontent.com/6643905/216682017-024835be-0792-4d45-a1e3-bcb4f868e5c2.PNG">|
         |:------------------------------------:|
 
 4. Package Archive into Microservice Docker Image
@@ -81,7 +81,7 @@
    - You can specify additional options in the compiler.build command by using name-value arguments.
 
     ```console
-    compiler.package.microserviceDockerImage(mpsResults,'ImageName','micro-magic')
+    compiler.package.microserviceDockerImage(mpsResults,'ImageName','sflorenz05/depsimmodstandappdocker/sample_wwtp_api:v0.1')
     ```
 
     - Expected Output:
@@ -112,16 +112,16 @@
     Removing intermediate container b686805c0d56
       ---> 8ec697f512af
     Successfully built 8ec697f512af
-    Successfully tagged micro-magic-v4:latest
+    Successfully tagged sflorenz05/depsimmodstandappdocker/sample_wwtp_api:v0.1
 
     DOCKER CONTEXT LOCATION:
 
-    /home/ubuntu/matlab_model/TestModel/micro-magic-v4microserviceDockerImage
+    /home/ubuntu/DepSimModStandAppDocker/src/sflorenz05/depsimmodstandappdocker/sample_wwtpmicroserviceDockerImage
 
 
     FOR HELP GETTING STARTED WITH MICROSERVICE IMAGES, PLEASE READ:
 
-    /home/ubuntu/matlab_model/TestModel/micro-magic-v4microserviceDockerImage/GettingStarted.txt
+    /home/ubuntu/DepSimModStandAppDocker/src/sflorenz05/depsimmodstandappdocker/sample_wwtpmicroserviceDockerImage/GettingStarted.txt
     ```
 
 5. The function generates the following files within a folder named micro-magicmicroserviceDockerImage in your current working directory:
