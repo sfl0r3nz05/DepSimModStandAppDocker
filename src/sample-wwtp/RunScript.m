@@ -8,5 +8,5 @@ function y_out = RunScript()
     out = sim(in);
 
     y_out = out.N_sensors(:,5);
-
+    disp(y_out)
 end
