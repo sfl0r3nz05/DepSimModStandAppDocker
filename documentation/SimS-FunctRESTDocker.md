@@ -1,7 +1,7 @@
 # Create Microservice Docker Image
 
 1. Clone the repository: `git clone https://github.com/sfl0r3nz05/DepSimModStandAppDocker.git`
-2. Go into the project folder ``cd ~/DistributedBchFWArchIoT/src/sample-wwtp` using Matlab:
+2. Go into the project folder `cd ~/DistributedBchFWArchIoT/src/sample-wwtp` using Matlab:
 
    <img width="960" alt="dockerdep4" src="https://user-images.githubusercontent.com/6643905/216677558-f146bf23-0921-408d-8245-08d07cefc671.PNG">
 
