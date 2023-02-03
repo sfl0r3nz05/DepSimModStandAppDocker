@@ -72,7 +72,7 @@
     - Once the build is complete, the function creates a folder named `sample_wwtpproductionServerArchive` in your current directory to store the deployable archive.
       - *See the compilation image*
 
-        |<img width="639" alt="dockerdep4" src="https://user-images.githubusercontent.com/6643905/216682017-024835be-0792-4d45-a1e3-bcb4f868e5c2.PNG">|
+        |<img width="426" alt="dockerdep4" src="https://user-images.githubusercontent.com/6643905/216682017-024835be-0792-4d45-a1e3-bcb4f868e5c2.PNG">|
         |:------------------------------------:|
 
 4. Package Archive into Microservice Docker Image
@@ -131,7 +131,7 @@
    3. `GettingStarted.txt` — Text file that contains deployment information.
       - *See the packaging image*
 
-          |<img width="181" alt="dockerdep4" src="https://user-images.githubusercontent.com/6643905/216699339-be4c320f-2096-46fd-92f3-8fd26486f93a.PNG">|
+          |<img width="362" alt="dockerdep4" src="https://user-images.githubusercontent.com/6643905/216699339-be4c320f-2096-46fd-92f3-8fd26486f93a.PNG">|
           |:----------------------------------------:|
 
 6. Test the image:
