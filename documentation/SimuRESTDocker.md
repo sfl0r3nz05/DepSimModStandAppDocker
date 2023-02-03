@@ -1,184 +1,184 @@
-# Simulink Project with S-Function To Docker Deployment
+# Create Microservice Docker Image
 
-This tutorial help to compile and containerize the next Simulink Project:
+This example shows how to create a microservice Docker image.
 
-![img](./images/wwtp.png)
+1. Create a folder for test: `mkdir ~/matlab_model/TestModel`
+2. Create Function in MATLAB on `TestModel` folder. See *before compilation image*
 
-## Create the Docker container **[On the VM where Matlab is installed]**
-
-1. Clone this repository.
-2. Go to the `src` folder: `cd ~/DepSimModStandAppDocker/src`.
-3. Copy the `sample-wwtp` folder in the `~/matlab_model/` folder: `cp ./sample-wwtp ~/matlab_model/`.
-4. Open Matlab considering same folder established in the [installation tutorial](./MatlabOnLinux.md):
+    - Write a MATLAB function called `mymagic` and save it with the file name `mymagic.m`.
 
     ```console
-    cd ~/MATLAB/R2022a/bin/
-    ./matlab
+    function y = mymagic(x)
+        y = magic(x);
+    end
     ```
 
-5. Go to the `sample-wwtp` folder inside of Matlab.
-7. Compile the Matlab S-Function:
+    - Test the function at the MATLAB command prompt.
 
     ```console
-    mex DN_process.c
+    mymagic(5)
     ```
 
     - Expected Output:
 
     ```console
-    Building with 'gcc'.
-    Mex completed successfully.
+    17    24     1     8    15
+    23     5     7    14    16
+     4     6    13    20    22
+    10    12    19    21     3
+    11    18    25     2     9
     ```
 
-    - The output file: `DN_process.mexa64` is generated.
+    - *See the *.m file*
 
-8. Load in Matlab environment the ini_DN.m variables:
+        |<img src="./images/matlab_before.png">|
+        |:------------------------------------:|
 
-    ```console
-    ini_DN
-    ```
+3. Create Deployable Archive
 
-    - Expected Output:
-
-    ![img](./images/ini_DN.png)
-
-9. Open the `.slx` file in Simulink and *Run* it in order to generate the `slprj` folder.
-
-    - Expected Output:
-
-    ![img](./images/slprj.png)
-
-    - Close the window after the simulation finish.
-
-10. Test the `RunScript` function on the Matlab cmd:
+   - Package the `mymagic` function into a deployable archive using the [compiler.build.productionServerArchive](https://es.mathworks.com/help/compiler_sdk/mps_dev_test/compiler.build.productionserverarchive.html) function.
 
     ```console
-    RunScript()
+    mpsResults = compiler.build.productionServerArchive('mymagic.m',...
+    'ArchiveName','magicarchive','Verbose','on')
     ```
 
     - Expected Output:
 
     ```console
-    >> RunScript()
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    ......
-    ......
-    ......
-    ```
+    mpsResults = 
 
-11. Launch the `RunScript.m` compilation including the `AdditionalFiles` property:
+      Results with properties:
 
-    ```console
-    res = compiler.build.standaloneApplication('RunScript.m', 'TreatInputsAsNumeric', true, 'AdditionalFiles', ["ini_DN.m","Input_Data.mat"])
-    ```
-
-    - Expected Output:
-
-    ```console
-
-    Build Summary
-
-    0 of 1 models built (1 models already up to date)
-    Build duration: 0h 0m 3.5325s
-
-    res = 
-
-    Results with properties:
-
-                      BuildType: 'standaloneApplication'
-                          Files: {3×1 cell}
+                      BuildType: 'productionServerArchive'
+                          Files: {'/home/mluser/Work/magicarchiveproductionServerArchive/magicarchive.ctf'}
         IncludedSupportPackages: {}
-                        Options: [1×1 compiler.build.StandaloneApplicationOptions]
+                        Options: [1×1 compiler.build.ProductionServerArchiveOptions]
     ```
 
-12. Package Standalone Application into Docker Image:
+    - The compiler.build.Results object mpsResults contains information on the build type, generated files, included support packages, and build options.
+    - Once the build is complete, the function creates a folder named `magicarchiveproductionServerArchive` in your current directory to store the deployable archive.
+      - *See the compilation image*
+
+        |<img src="./images/compilerBuilt.png">|
+        |:------------------------------------:|
+
+4. Package Archive into Microservice Docker Image
+
+   - Build the microservice Docker image using the mpsResults object that you created.
+   - You can specify additional options in the compiler.build command by using name-value arguments.
 
     ```console
-    opts = compiler.package.DockerOptions(res, 'ImageName', 'sflorenz05/sample_wwtp')
-    ```
-
-    - Expected Output:
-
-    ```console
-    opts =
-
-      DockerOptions with properties:
-
-                EntryPoint: 'RunScript'
-        ExecuteDockerBuild: on
-                 ImageName: 'sflorenz05/wwtp'
-             DockerContext: './sflorenz05/sample_wwtpdocker'
-    ```
-
-13. Create a Docker Image
-
-    ```console
-    compiler.package.docker(res, 'Options', opts)
+    compiler.package.microserviceDockerImage(mpsResults,'ImageName','micro-magic')
     ```
 
     - Expected Output:
 
     ```console
     Runtime Image Already Exists
-    Sending build context to Docker daemon  557.1kB
-    Sending build context to Docker daemon  4.456MB
-    Sending build context to Docker daemon  8.356MB
-    Sending build context to Docker daemon   11.1MB
+    Sending build context to Docker daemon  34.82kB
 
 
-    Step 1/6 : FROM matlabruntime/r2022a/release/update5/e0000000000000200
-     ---> dc12891158c3
+    Step 1/6 : FROM matlabruntime/r2022a/release/update5/21000000000000000
+      ---> ad58363ceb4a
     Step 2/6 : COPY ./applicationFilesForMATLABCompiler /usr/bin/mlrtapp
-     ---> 4f44e9169b92
+      ---> d5bee0724803
     Step 3/6 : RUN chmod -R a+rX /usr/bin/mlrtapp/*
-     ---> Running in 6b4a3b40dcc5
-    Removing intermediate container 6b4a3b40dcc5
-     ---> 4c7c29a2253f
+      ---> Running in fcfebc2cff44
+    Removing intermediate container fcfebc2cff44
+      ---> f1fafe2cc595
     Step 4/6 : RUN useradd -ms /bin/bash appuser
-     ---> Running in bea321274686
-    Removing intermediate container bea321274686
-     ---> 93744760564e
+      ---> Running in fe85c3cc0c67
+    Removing intermediate container fe85c3cc0c67
+      ---> ff1ce2305910
     Step 5/6 : USER appuser
-     ---> Running in 5abe48e76ae1
-    Removing intermediate container 5abe48e76ae1
-     ---> a1b25420b905
-    Step 6/6 : ENTRYPOINT ["/usr/bin/mlrtapp/RunScript"]
-     ---> Running in 99ad37ccca31
-    Removing intermediate container 99ad37ccca31
-     ---> 63eff14be9e5
-    Successfully built 63eff14be9e5
-    Successfully tagged sflorenz05/wwtp:latest
+      ---> Running in 6b976bfd4b18
+    Removing intermediate container 6b976bfd4b18
+      ---> dc0fba8b0a53
+    Step 6/6 : ENTRYPOINT ["/opt/matlabruntime/v912/bin/glnxa64/muserve", "-a", "/usr/bin/mlrtapp/magicarchive.ctf"]
+      ---> Running in b686805c0d56
+    Removing intermediate container b686805c0d56
+      ---> 8ec697f512af
+    Successfully built 8ec697f512af
+    Successfully tagged micro-magic-v4:latest
 
     DOCKER CONTEXT LOCATION:
 
-    /home/ubuntu/matlab_model/TestSFunction/sflorenz05/wwtpdocker
+    /home/ubuntu/matlab_model/TestModel/micro-magic-v4microserviceDockerImage
 
-    SAMPLE DOCKER RUN COMMAND:
 
-    docker run --rm -e "DISPLAY=:0" -v /tmp/.X11-unix:/tmp/.X11-unix sflorenz05/wwtp
+    FOR HELP GETTING STARTED WITH MICROSERVICE IMAGES, PLEASE READ:
 
-    EXECUTE xhost + ON THE HOST MACHINE TO VIEW CONTAINER GRAPHICS.
+    /home/ubuntu/matlab_model/TestModel/micro-magic-v4microserviceDockerImage/GettingStarted.txt
     ```
 
-14. Command window sample:
+5. The function generates the following files within a folder named micro-magicmicroserviceDockerImage in your current working directory:
 
-    |        ![img](./images/full_proj.png)        |
-    |:--------------------------------------------:|
-    |          **Full Project Overview**           |
+   1. `applicationFilesForMATLABCompiler/magicarchive.ctf` — Deployable archive file.
+   2. `Dockerfile` — Docker file that specifies Docker run-time options.
+   3. `GettingStarted.txt` — Text file that contains deployment information.
+      - *See the packaging image*
+
+          |<img src="./images/compilerPackMicro.png">|
+          |:----------------------------------------:|
+
+6. Test the image:
+
+    ```console
+    docker ps
+    ```
+
+    - Expected Output:
+
+    ```console
+    REPOSITORY         TAG             IMAGE ID          CREATED         SIZE
+    micro-magic        latest          8ec697f512af      4 hours ago     1.48GB
+    ```
+
+7. Run the micro-magic microservice image in Docker.
+
+    ```console
+    docker run --rm -p 9900:9910 micro-magic
+    ```
+
+8. Once the microservice container is running in Docker, you can check the status of the service by opening the following URL in a web browser:
+
+    ```console
+    curl http://localhost:9900/api/health
+    ```
+
+    - Expected Output:
+
+    ```console
+    {"status:  ok"}
+    ```
+
+9. Test the running service:
+
+    ```console
+    curl -v -H Content-Type:application/json -d '{"nargout":1,"rhs":[4]}' http://localhost:9900/magicarchive/mymagic
+    ```
+
+    - Expected Output:
+
+    ```console
+    *   Trying 127.0.0.1:9900...
+    * TCP_NODELAY set
+    * Connected to localhost (127.0.0.1) port 9900 (#0)
+    > POST /magicarchive/mymagic HTTP/1.1
+    > Host: localhost:9900
+    > User-Agent: curl/7.68.0
+    > Accept: */*
+    > Content-Type:application/json
+    > Content-Length: 23
+    > 
+    * upload completely sent off: 23 out of 23 bytes
+    * Mark bundle as not supporting multiuse
+    < HTTP/1.1 200 OK
+    < Content-Type: application/json
+    < Content-Length: 94
+    < Connection: Keep-Alive
+    < 
+    * Connection #0 to host localhost left intact
+    {"lhs":[{"mwdata":[16,5,9,4,2,11,7,14,3,10,6,15,13,8,12,1],"mwsize":[4,4],"mwtype":"double"}]}    
+    ```
