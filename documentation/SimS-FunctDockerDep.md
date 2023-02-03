@@ -17,10 +17,10 @@ This tutorial help to compile and containerize the next Simulink Project:
     ```
 
 5. Go to the `sample-wwtp` folder inside of Matlab.
-7. Compile the Matlab S-Function:
+6. Compile the Matlab S-Function:
 
     ```console
-    mex DN_process.c
+    mex DN_PROCESS.c
     ```
 
     - Expected Output:
@@ -32,7 +32,7 @@ This tutorial help to compile and containerize the next Simulink Project:
 
     - The output file: `DN_process.mexa64` is generated.
 
-8. Load in Matlab environment the ini_DN.m variables:
+7. Load in Matlab environment the ini_DN.m variables:
 
     ```console
     ini_DN
@@ -42,7 +42,7 @@ This tutorial help to compile and containerize the next Simulink Project:
 
     ![img](./images/ini_DN.png)
 
-9. Open the `.slx` file in Simulink and *Run* it in order to generate the `slprj` folder.
+8. Open the `.slx` file in Simulink and *Run* it in order to generate the `slprj` folder.
 
     - Expected Output:
 
@@ -50,7 +50,7 @@ This tutorial help to compile and containerize the next Simulink Project:
 
     - Close the window after the simulation finish.
 
-10. Test the `RunScript` function on the Matlab cmd:
+9. Test the `RunScript` function on the Matlab cmd:
 
     ```console
     RunScript()
@@ -83,7 +83,7 @@ This tutorial help to compile and containerize the next Simulink Project:
     ......
     ```
 
-11. Launch the `RunScript.m` compilation including the `AdditionalFiles` property:
+10. Launch the `RunScript.m` compilation including the `AdditionalFiles` property:
 
     ```console
     res = compiler.build.standaloneApplication('RunScript.m', 'TreatInputsAsNumeric', true, 'AdditionalFiles', ["ini_DN.m","Input_Data.mat"])
@@ -108,10 +108,10 @@ This tutorial help to compile and containerize the next Simulink Project:
                         Options: [1×1 compiler.build.StandaloneApplicationOptions]
     ```
 
-12. Package Standalone Application into Docker Image:
+11. Package Standalone Application into Docker Image:
 
     ```console
-    opts = compiler.package.DockerOptions(res, 'ImageName', 'sflorenz05/sample_wwtp')
+    opts = compiler.package.DockerOptions(res, 'ImageName', 'sflorenz05/depsimmodstandappdocker/sample_wwtp')
     ```
 
     - Expected Output:
@@ -123,11 +123,11 @@ This tutorial help to compile and containerize the next Simulink Project:
 
                 EntryPoint: 'RunScript'
         ExecuteDockerBuild: on
-                 ImageName: 'sflorenz05/wwtp'
-             DockerContext: './sflorenz05/sample_wwtpdocker'
+                 ImageName: 'sflorenz05/depsimmodstandappdocker/wwtp'
+             DockerContext: './sflorenz05/depsimmodstandappdocker/sample_wwtpdocker'
     ```
 
-13. Create a Docker Image
+12. Create a Docker Image
 
     ```console
     compiler.package.docker(res, 'Options', opts)
@@ -177,7 +177,7 @@ This tutorial help to compile and containerize the next Simulink Project:
     EXECUTE xhost + ON THE HOST MACHINE TO VIEW CONTAINER GRAPHICS.
     ```
 
-14. Command window sample:
+13. Command window sample:
 
     |        ![img](./images/full_proj.png)        |
     |:--------------------------------------------:|
