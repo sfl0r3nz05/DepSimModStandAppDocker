@@ -7,22 +7,61 @@
 
 3. Create Deployable Archive
 
-   - Package the `mymagic` function into a deployable archive using the [compiler.build.productionServerArchive](https://es.mathworks.com/help/compiler_sdk/mps_dev_test/compiler.build.productionserverarchive.html) function.
+   - Creates a deployable archive with options specified
 
     ```console
-    mpsResults = compiler.build.productionServerArchive('mymagic.m',...
-    'ArchiveName','magicarchive','Verbose','on')
+    opts = compiler.build.ProductionServerArchiveOptions('RunScript.m',...
+    'ArchiveName','sample_wwtp',...
+    'AdditionalFiles',["ini_DN.m","Input_Data.mat"],...
+    'AutoDetectDataFiles','on',...
+    'Verbose','on')
     ```
 
     - Expected Output:
 
     ```console
+    opts = 
+
+    ProductionServerArchiveOptions with properties:
+
+              ArchiveName: 'sample_wwtp'
+           FunctionFiles: {'/home/usuario/DepSimModStandAppDocker/src/sample-wwtp/RunScript.m'}
+       FunctionSignatures: ''
+          AdditionalFiles: {'/home/usuario/DepSimModStandAppDocker/src/sample-wwtp/Input_Data.mat'}
+      AutoDetectDataFiles: on
+          SupportPackages: {'autodetect'}
+                  Verbose: on
+                OutputDir: './sample_wwtpproductionServerArchive'
+    ```
+
+   - Package the `RunScript` function into a deployable archive using the [compiler.build.productionServerArchive](https://es.mathworks.com/help/compiler_sdk/mps_dev_test/compiler.build.productionserverarchive.html) function.
+
+    ```console
+    mpsResults=compiler.build.productionServerArchive(opts)
+    ```
+
+    ```console
+    mcc -W CTF:sample_wwtp -d ./sample_wwtpproductionServerArchive -v -a /home/usuario/DepSimModStandAppDocker/src/sample-wwtp/Input_Data.mat -Z autodetect -U /home/usuario/DepSimModStandAppDocker/src/sample-wwtp/RunScript.m
+    Compiler version: 8.4 (R2022a)
+    Analyzing file dependencies. 
+    ### Generating code and artifacts to 'Model specific' folder structure
+    ### Generating code into build folder: /home/usuario/DepSimModStandAppDocker/src/sample-wwtp/slprj/raccel_deploy/Remedy_WWTP_OL_FMU_2021b
+    ### Saving binary information cache.
+
+    Build Summary
+
+    0 of 1 models built (1 models already up to date)
+    Build duration: 0h 0m 1.4837s
+    Parsing file "/home/usuario/DepSimModStandAppDocker/src/sample-wwtp/RunScript.m"
+      (referenced from command line).
+    Generating file "/home/usuario/DepSimModStandAppDocker/src/sample-wwtp/sample_wwtpproductionServerArchive/readme.txt".
+
     mpsResults = 
 
       Results with properties:
 
                       BuildType: 'productionServerArchive'
-                          Files: {'/home/mluser/Work/magicarchiveproductionServerArchive/magicarchive.ctf'}
+                          Files: {'/home/usuario/DepSimModStandAppDocker/src/sample-wwtp/sample_wwtpproductionServerArchive/sample_wwtp.ctf'}
         IncludedSupportPackages: {}
                         Options: [1×1 compiler.build.ProductionServerArchiveOptions]
     ```
