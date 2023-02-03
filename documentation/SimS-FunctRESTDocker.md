@@ -196,6 +196,12 @@
 10. Container log: `sflorenz05/depsimmodstandappdocker/sample_wwtp_api:v0.1`
 
     ```console
+    docker run --rm -p 9900:9910 sflorenz05/depsimmodstandappdocker/sample_wwtp_api:v0.1
+    ```
+
+    - Output:
+
+    ```console
     1 [2023.02.03 17:25:55.631370] [information] Starting Microservice Runner (pid = 1)
     2 [2023.02.03 17:25:55.631476] [information] Global locale: en_US
     3 [2023.02.03 17:25:55.631484] [information] Global encoding: US-ASCII
