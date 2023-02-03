@@ -40,6 +40,8 @@
     mpsResults=compiler.build.productionServerArchive(opts)
     ```
 
+    - Expected Output:
+
     ```console
     mcc -W CTF:sample_wwtp -d ./sample_wwtpproductionServerArchive -v -a /home/usuario/DepSimModStandAppDocker/src/sample-wwtp/Input_Data.mat -Z autodetect -U /home/usuario/DepSimModStandAppDocker/src/sample-wwtp/RunScript.m
     Compiler version: 8.4 (R2022a)
@@ -67,10 +69,10 @@
     ```
 
     - The compiler.build.Results object mpsResults contains information on the build type, generated files, included support packages, and build options.
-    - Once the build is complete, the function creates a folder named `magicarchiveproductionServerArchive` in your current directory to store the deployable archive.
+    - Once the build is complete, the function creates a folder named `sample_wwtpproductionServerArchive` in your current directory to store the deployable archive.
       - *See the compilation image*
 
-        |<img src="./images/compilerBuilt.png">|
+        |<img width="213" alt="dockerdep4" src="https://user-images.githubusercontent.com/6643905/216682017-024835be-0792-4d45-a1e3-bcb4f868e5c2.PNG">|
         |:------------------------------------:|
 
 4. Package Archive into Microservice Docker Image
