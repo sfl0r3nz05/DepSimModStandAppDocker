@@ -5,9 +5,9 @@
 1. Clone the repository: `git clone https://github.com/sfl0r3nz05/DepSimModStandAppDocker.git`
 2. Go into the project folder `cd ~/DistributedBchFWArchIoT/src/simple_simulink_proj` using Matlab:
 
-    |---|
+    | |
     |:-------------------------------:|
-    |![image](./images/RunScript.png) |
+    |![image](https://user-images.githubusercontent.com/6643905/216972286-c134e690-52ab-4d52-8d46-0d60566b156e.png) |
 
 3. Test the `RunScript` function on the Matlab cmd:
 
