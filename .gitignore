@@ -12,5 +12,5 @@ src/sample-wwtp/slprj/
 /src/simple_simulink_proj/*.slxc
 /src/simple_simulink_proj/RunScriptstandaloneApplication/
 /src/simple_simulink_proj/sflorenz05/
-/src/simple_simulink_proj/*.slx.autosave
+/src/simple_simulink_proj/Modelo_Simulink_2021b.slx.autosave
 /src/simple_simulink_proj/simple_simulink_projproductionServerArchive/*

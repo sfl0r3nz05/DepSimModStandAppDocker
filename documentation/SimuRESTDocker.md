@@ -83,7 +83,7 @@
     - Once the build is complete, the function creates a folder named `simple_simulink_projproductionServerArchive` in your current directory to store the deployable archive.
       - *See the compilation image*
 
-        |<img width="426" alt="dockerdep4" src="https://user-images.githubusercontent.com/6643905/216991691-08b0d862-fe69-414d-a4e3-482d2e8bd8ab.png">|
+        |<img width="652" alt="dockerdep4" src="https://user-images.githubusercontent.com/6643905/216991691-08b0d862-fe69-414d-a4e3-482d2e8bd8ab.png">|
         |:------------------------------------:|
 
 4. Package Archive into Microservice Docker Image
@@ -142,7 +142,7 @@
    3. `GettingStarted.txt` — Text file that contains deployment information.
       - *See the packaging image*
 
-          |<img width="362" alt="dockerdep4" src="https://user-images.githubusercontent.com/6643905/216699339-be4c320f-2096-46fd-92f3-8fd26486f93a.PNG">|
+          |<img width="724" alt="dockerdep4" src="https://user-images.githubusercontent.com/6643905/216699339-be4c320f-2096-46fd-92f3-8fd26486f93a.PNG">|
           |:----------------------------------------:|
 
 6. Test the image:
