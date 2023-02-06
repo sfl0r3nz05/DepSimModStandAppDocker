@@ -14,3 +14,5 @@ src/sample-wwtp/slprj/
 /src/simple_simulink_proj/sflorenz05/
 /src/simple_simulink_proj/Modelo_Simulink_2021b.slx.autosave
 /src/simple_simulink_proj/simple_simulink_projproductionServerArchive/*
+/src/complex-sample-wwtp/*.slxc
+/src/complex-sample-wwtp/slprj/

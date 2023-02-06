@@ -2,7 +2,7 @@
 
 This tutorial help to compile and containerize the next Simulink Project:
 
-![img]()
+![img](https://user-images.githubusercontent.com/6643905/217027408-7362c254-d1fc-4a44-99a1-8417465e9262.png)
 
 ## Create the Docker container **[On the VM where Matlab is installed]**
 
@@ -11,9 +11,21 @@ This tutorial help to compile and containerize the next Simulink Project:
 
     | |
     |:---------:|
-    |![image](https://user-images.githubusercontent.com/6643905/217024873-7cbca82d-771a-4580-9629-3d62c3a00847.png)|
+    |![image](https://user-images.githubusercontent.com/6643905/217028428-34bb1dfe-2801-4e36-95a6-eaa27b8eb1c2.png)|
 
-3. Compile the Matlab S-Function:
+3. Initialize project variables
+
+    ```console
+    ini_Param()
+    ```
+
+    - Expected Output:
+
+    | |
+    |:---------:|
+    |![image](https://user-images.githubusercontent.com/6643905/217027278-5698ea81-b132-4658-8515-34b88980f911.png)|
+
+4. Compile the Matlab S-Function:
 
     ```console
     mex DN_PROCESS.c
