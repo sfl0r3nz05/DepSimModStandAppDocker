@@ -46,36 +46,44 @@
     - Expected Output:
 
     ```console
-    mcc -W CTF:sample_wwtp -d ./sample_wwtpproductionServerArchive -v -a /home/usuario/DepSimModStandAppDocker/src/sample-wwtp/Input_Data.mat -Z autodetect -U /home/usuario/DepSimModStandAppDocker/src/sample-wwtp/RunScript.m
+    mcc -W CTF:simple_simulink_proj -d ./simple_simulink_projproductionServerArchive -v -Z autodetect -U /home/usuario/DepSimModStandAppDocker/src/simple_simulink_proj/RunScript.m
     Compiler version: 8.4 (R2022a)
     Analyzing file dependencies. 
     ### Generating code and artifacts to 'Model specific' folder structure
-    ### Generating code into build folder: /home/usuario/DepSimModStandAppDocker/src/sample-wwtp/slprj/raccel_deploy/Remedy_WWTP_OL_FMU_2021b
-    ### Saving binary information cache.
+    ### Generating code into build folder: /home/usuario/DepSimModStandAppDocker/src/simple_simulink_proj/slprj/raccel_deploy/Modelo_Simulink_2021b
+    ### Building the rapid accelerator target for model: Modelo_Simulink_2021b
+    ### Invoking Target Language Compiler on Modelo_Simulink_2021b.rtw
+    ### Using System Target File: /home/usuario/MATLAB/rtw/c/raccel/raccel.tlc
 
     Build Summary
 
-    0 of 1 models built (1 models already up to date)
-    Build duration: 0h 0m 1.4837s
-    Parsing file "/home/usuario/DepSimModStandAppDocker/src/sample-wwtp/RunScript.m"
-      (referenced from command line).
-    Generating file "/home/usuario/DepSimModStandAppDocker/src/sample-wwtp/sample_wwtpproductionServerArchive/readme.txt".
+    Top model rapid accelerator targets built:
+
+    Model                  Action                       Rebuild Reason                                    
+    ======================================================================================================
+    Modelo_Simulink_2021b  Code generated and compiled  Code generation information file does not exist.  
+
+    1 of 1 models built (0 models already up to date)
+    Build duration: 0h 0m 4.2823s
+    Parsing file "/home/usuario/DepSimModStandAppDocker/src/simple_simulink_proj/RunScript.m"
+            (referenced from command line).
+    Generating file "/home/usuario/DepSimModStandAppDocker/src/simple_simulink_proj/simple_simulink_projproductionServerArchive/readme.txt".
 
     mpsResults = 
 
       Results with properties:
 
                       BuildType: 'productionServerArchive'
-                          Files: {'/home/usuario/DepSimModStandAppDocker/src/sample-wwtp/sample_wwtpproductionServerArchive/sample_wwtp.ctf'}
-        IncludedSupportPackages: {}
-                        Options: [1×1 compiler.build.ProductionServerArchiveOptions]
+                          Files: {'/home/usuario/DepSimModStandAppDocker/src/simple_simulink_proj/simple_simulink_projproductionServerArchive/simple_simulink_proj.ctf'}
+       IncludedSupportPackages: {}
+                       Options: [1×1 compiler.build.ProductionServerArchiveOptions]
     ```
 
     - The compiler.build.Results object mpsResults contains information on the build type, generated files, included support packages, and build options.
-    - Once the build is complete, the function creates a folder named `sample_wwtpproductionServerArchive` in your current directory to store the deployable archive.
+    - Once the build is complete, the function creates a folder named `simple_simulink_projproductionServerArchive` in your current directory to store the deployable archive.
       - *See the compilation image*
 
-        |<img width="426" alt="dockerdep4" src="https://user-images.githubusercontent.com/6643905/216682017-024835be-0792-4d45-a1e3-bcb4f868e5c2.PNG">|
+        |<img width="426" alt="dockerdep4" src="https://user-images.githubusercontent.com/6643905/216991691-08b0d862-fe69-414d-a4e3-482d2e8bd8ab.png">|
         |:------------------------------------:|
 
 4. Package Archive into Microservice Docker Image
