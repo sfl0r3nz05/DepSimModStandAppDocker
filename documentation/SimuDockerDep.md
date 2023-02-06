@@ -84,16 +84,16 @@
     Modelo_Simulink_2021b  Code generated and compiled  Code generation information file does not exist.  
 
     1 of 1 models built (0 models already up to date)
-    Build duration: 0h 0m 24.251s
+    Build duration: 0h 0m 3.8855s
 
     res = 
 
       Results with properties:
 
-                      BuildType: 'standaloneApplication'
-                          Files: {3×1 cell}
+                     BuildType: 'standaloneApplication'
+                         Files: {3×1 cell}
         IncludedSupportPackages: {}
-                        Options: [1×1 compiler.build.StandaloneApplicationOptions]       
+                         Options: [1×1 compiler.build.StandaloneApplicationOptions]
     ```
 
 5. Package Standalone Application into Docker Image:
