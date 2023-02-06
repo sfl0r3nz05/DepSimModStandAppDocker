@@ -25,7 +25,7 @@ This tutorial help to compile and containerize the next Simulink Project:
     |:---------:|
     |![image](https://user-images.githubusercontent.com/6643905/217027278-5698ea81-b132-4658-8515-34b88980f911.png)|
 
-4. Open Simulink project`: `Modelo_Simulink_WWTP_2021b.slx`
+4. Open Simulink project`: `Modelo_Simulink_WWTP_2021b.slx` and execute the simulation:
 
     - Expected Output:
 
