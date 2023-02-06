@@ -9,8 +9,7 @@
     |:-------------------------------:|
     |![image](./images/RunScript.png) |
 
-3. Go to the `RunScript` folder inside of Matlab.
-4. Test the `RunScript` function on the Matlab cmd:
+3. Test the `RunScript` function on the Matlab cmd:
 
     ```console
     RunScript()
@@ -52,7 +51,7 @@
         ......    ......        
     ```
 
-5. Launch the `RunScript.m` compilation:
+4. Launch the `RunScript.m` compilation:
 
     ```console
     res = compiler.build.standaloneApplication('RunScript.m', 'TreatInputsAsNumeric', true)
@@ -85,7 +84,7 @@
                         Options: [1×1 compiler.build.StandaloneApplicationOptions]       
     ```
 
-6. Package Standalone Application into Docker Image:
+5. Package Standalone Application into Docker Image:
 
     ```console
     opts = compiler.package.DockerOptions(res, 'ImageName', 'wwtp')
@@ -104,7 +103,7 @@
              DockerContext: './wwtpdocker'       
     ```
 
-7. Create a Docker Image
+6. Create a Docker Image
 
     ```console
     compiler.package.docker(res, 'Options', opts)
@@ -199,7 +198,7 @@
     |:-----------------------------------:|
     |  ![image](./images/FullDeploy.png)  |
 
-8. Test the Docker Image
+7. Test the Docker Image
 
     ```console
     docker images
