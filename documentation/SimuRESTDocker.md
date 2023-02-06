@@ -186,36 +186,41 @@
     - Output:
 
     ```console
-    1 [2023.02.03 17:25:55.631370] [information] Starting Microservice Runner (pid = 1)
-    2 [2023.02.03 17:25:55.631476] [information] Global locale: en_US
-    3 [2023.02.03 17:25:55.631484] [information] Global encoding: US-ASCII
-    4 [2023.02.03 17:25:55.631489] [information] terminal encoding: US-ASCII
-    12 [2023.02.03 17:25:55.998795] [information] configuring WebFunction router
-    13 [2023.02.03 17:25:55.998835] [information] -- (no routes file configured) Using XHeaderMatcher for WebFunction routing
-    79 [2023.02.03 17:25:56.964386] [out] [worker:1] Worker ready - protocol v2
-    83 [2023.02.03 17:25:56.964985] [information] [PTR:0x5c0b30] [SERVICE:worker] [THREAD_POOL:request_thread_pool] Worker 1 started [Microservice Runner]
-    Accepting HTTP connections on 3ed43635e06b:9910
-    101 [2023.02.03 17:25:56.965405] [information] Microservice Runner started
-    102 [2023.02.03 17:25:56.965439] [information] [PTR:0x5c0b30] [SERVICE:http] [THREAD_POOL:request_thread_pool] [endpoint:[::]:9910] Listening for connections
-    185 [2023.02.03 17:28:31.502410] [out] [worker:1]     0.0012
-    186 [2023.02.03 17:28:31.502443] [out] [worker:1]     0.0012
-    187 [2023.02.03 17:28:31.502448] [out] [worker:1]     0.0012
-    188 [2023.02.03 17:28:31.502452] [out] [worker:1]     0.0012
-    189 [2023.02.03 17:28:31.502455] [out] [worker:1]     0.0012
-    190 [2023.02.03 17:28:31.502459] [out] [worker:1]     0.0012
-    191 [2023.02.03 17:28:31.502462] [out] [worker:1]     0.0012
-    192 [2023.02.03 17:28:31.502465] [out] [worker:1]     0.0012
-    193 [2023.02.03 17:28:31.502469] [out] [worker:1]     0.0012
-    194 [2023.02.03 17:28:31.502472] [out] [worker:1]     0.0012
-    195 [2023.02.03 17:28:31.502475] [out] [worker:1]     0.0012
-    196 [2023.02.03 17:28:31.502479] [out] [worker:1]     0.0012
-    197 [2023.02.03 17:28:31.502485] [out] [worker:1]     0.0012
-    198 [2023.02.03 17:28:31.502508] [out] [worker:1]     0.0012
-    199 [2023.02.03 17:28:31.502512] [out] [worker:1]     0.0012
-    200 [2023.02.03 17:28:31.502517] [out] [worker:1]     0.0012
-    201 [2023.02.03 17:28:31.502520] [out] [worker:1]     0.0012
-    202 [2023.02.03 17:28:31.502525] [out] [worker:1]     0.0012
-    203 [2023.02.03 17:28:31.502529] [out] [worker:1]     0.0012
-    204 [2023.02.03 17:28:31.502533] [out] [worker:1]     0.0012
-    205 [2023.02.03 17:28:31.502538] [out] [worker:1]     0.0012
+    1 [2023.02.06 15:52:10.070881] [information] Starting Microservice Runner (pid = 1)
+    2 [2023.02.06 15:52:10.070958] [information] Global locale: en_US
+    3 [2023.02.06 15:52:10.070966] [information] Global encoding: US-ASCII
+    4 [2023.02.06 15:52:10.070971] [information] terminal encoding: US-ASCII
+    12 [2023.02.06 15:52:10.438912] [information] configuring WebFunction router
+    13 [2023.02.06 15:52:10.438942] [information] -- (no routes file configured) Using XHeaderMatcher for WebFunction routing
+    79 [2023.02.06 15:52:11.299110] [out] [worker:1] Worker ready - protocol v2
+    83 [2023.02.06 15:52:11.299495] [information] [PTR:0x20f6490] [SERVICE:worker] [THREAD_POOL:request_thread_pool] Worker 1 started 
+    [Microservice Runner]
+    Accepting HTTP connections on 54a875fa0c8c:9910
+    101 [2023.02.06 15:52:11.299777] [information] Microservice Runner started
+    102 [2023.02.06 15:52:11.299791] [information] [PTR:0x20f6490] [SERVICE:http] [THREAD_POOL:request_thread_pool] [endpoint:[::]:9910] Listening for connections
+    121 [2023.02.06 15:52:44.658758] [out] [worker:1]          0         0
+    122 [2023.02.06 15:52:44.658810] [out] [worker:1]     0.0100    0.0040
+    123 [2023.02.06 15:52:44.658819] [out] [worker:1]     0.0200    0.0146
+    124 [2023.02.06 15:52:44.658824] [out] [worker:1]     0.0300    0.0302
+    125 [2023.02.06 15:52:44.658829] [out] [worker:1]     0.0400    0.0491
+    126 [2023.02.06 15:52:44.658833] [out] [worker:1]     0.0500    0.0704
+    127 [2023.02.06 15:52:44.658838] [out] [worker:1]     0.0600    0.0930
+    128 [2023.02.06 15:52:44.658842] [out] [worker:1]     0.0700    0.1163
+    129 [2023.02.06 15:52:44.658847] [out] [worker:1]     0.0800    0.1396
+    130 [2023.02.06 15:52:44.658851] [out] [worker:1]     0.0900    0.1626
+    131 [2023.02.06 15:52:44.658856] [out] [worker:1]     0.1000    0.1848
+    132 [2023.02.06 15:52:44.658861] [out] [worker:1]     0.1100    0.2061
+    133 [2023.02.06 15:52:44.658865] [out] [worker:1]     0.1200    0.2263
+    134 [2023.02.06 15:52:44.658896] [out] [worker:1]     0.1300    0.2452
+    135 [2023.02.06 15:52:44.658905] [out] [worker:1]     0.1400    0.2627
+    136 [2023.02.06 15:52:44.658910] [out] [worker:1]     0.1500    0.2790
+    137 [2023.02.06 15:52:44.658915] [out] [worker:1]     0.1600    0.2938
+    138 [2023.02.06 15:52:44.658920] [out] [worker:1]     0.1700    0.3073
+    139 [2023.02.06 15:52:44.658924] [out] [worker:1]     0.1800    0.3195
+    140 [2023.02.06 15:52:44.658929] [out] [worker:1]     0.1900    0.3305
+    141 [2023.02.06 15:52:44.658933] [out] [worker:1]     0.2000    0.3402
+    142 [2023.02.06 15:52:44.658938] [out] [worker:1]     0.2100    0.3488
+    143 [2023.02.06 15:52:44.658943] [out] [worker:1]     0.2200    0.3563
+    144 [2023.02.06 15:52:44.658948] [out] [worker:1]     0.2300    0.3629
+    145 [2023.02.06 15:52:44.658955] [out] [worker:1]     0.2400    0.3684
     ```
