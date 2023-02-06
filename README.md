@@ -16,7 +16,8 @@ The following repository is intended to document the procedure to deploy a Simul
 
 1. [Basic function](./documentation/BasicFunctionDocker.md). **[Optional: only for testing purposes]**
 2. [Deploy Simulink Model](./documentation/SimuDockerDep.md). **[Optional: only for testing purposes]**.
-3. [Deploy Simulink Model with S-Fuctions](./documentation/SimS-FunctDockerDep.md). **[Required]**
+3. [Deploy Simulink Model with S-Fuctions](./documentation/SimS-FunctDockerDep.md). **[Optional: only for testing purposes]**
+4. [Deploy a more complex Simulink Model with S-Functions](./documentation/.md). **[Required]**)
 
 ## III. From compiler to Microservice
 
