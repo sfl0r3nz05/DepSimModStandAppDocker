@@ -5,6 +5,7 @@
 1. Clone the repository: `git clone https://github.com/sfl0r3nz05/DepSimModStandAppDocker.git`
 2. Go into the project folder `cd ~/DistributedBchFWArchIoT/src/simple_simulink_proj` using Matlab:
 
+    |---|
     |:-------------------------------:|
     |![image](./images/RunScript.png) |
 
@@ -137,7 +138,7 @@
 
     |     **Matlab Project Overview**     |
     |:-----------------------------------:|
-    |  ![image](https://user-images.githubusercontent.com/6643905/216982610-1b7d9722-700c-49da-ab6e-47ffe5a80643.png)  |
+    |  ![image](https://user-images.githubusercontent.com/6643905/216983398-5443f9f8-76ad-4179-9d99-874b030a8ae7.png)  |
 
 7. Test the Docker Image
 
