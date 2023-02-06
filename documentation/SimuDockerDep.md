@@ -143,21 +143,20 @@
 7. Test the Docker Image
 
     ```console
-    docker images
+    docker images -a
     ```
 
     - Expected Output:
 
     ```console
-    REPOSITORY                                      TAG           IMAGE ID            CREATED             SIZE
-    wwtp                                            latest        819f8be5e2ac        39 hours ago        3.22GB
-    matlabruntime/r2022a/update5/e000000000000200   latest        c6eb5ba4ae69        24 hours ago        1.03GB
+    REPOSITORY                                                TAG       IMAGE ID       CREATED          SIZE
+    sflorenz05/depsimmodstandappdocker/simple_simulink_proj   v0.1      25ec0170404d   11 minutes ago   3.22GB
     ```
 
-8. Run the `wwtp` image:
+8. Run the `sflorenz05/depsimmodstandappdocker/simple_simulink_proj:v0.1` image:
 
     ```console
-    docker run --rm -e "DISPLAY=:0" -v /tmp/.X11-unix:/tmp/.X11-unix wwtp
+    docker run --rm -e "DISPLAY=localhost:10.0" -v /tmp/.X11-unix:/tmp/.X11-unix sflorenz05/depsimmodstandappdocker/simple_simulink_proj:v0.1
     ```
 
     - Expected Output:
@@ -174,11 +173,9 @@
         0.0800    0.1396
         0.0900    0.1626
         0.1000    0.1848
+        0.1100    0.2061
         ......    ......
         ......    ......
         ......    ...... 
     ```
 
-    |          **Docker Test Overview**            |
-    |:--------------------------------------------:|
-    |  ![image](./images/FullDeployContainer.png)  |
