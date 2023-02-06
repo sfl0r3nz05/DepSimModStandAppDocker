@@ -8,6 +8,6 @@ src/sample-wwtp/slprj/
 /src/sample-wwtp/sample_wwtpmicroserviceDockerImage/
 /src/sample-wwtp/sample_wwtpproductionServerArchive/
 /src/sample-wwtp/sflorenz05/
-src/simple_simulink_proj/slprj/
+/src/simple_simulink_proj/slprj/
 /src/simple_simulink_proj/*.slxc
 /src/simple_simulink_proj/RunScriptstandaloneApplication/
