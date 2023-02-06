@@ -92,57 +92,30 @@
    - You can specify additional options in the compiler.build command by using name-value arguments.
 
     ```console
-    compiler.package.microserviceDockerImage(mpsResults,'ImageName','sflorenz05/depsimmodstandappdocker/sample_wwtp_api:v0.1')
+    compiler.package.microserviceDockerImage(mpsResults,'ImageName','sflorenz05/depsimmodstandappdocker/simple_simulink_proj_api:v0.1')
     ```
 
     - Expected Output:
 
     ```console
-    Runtime Image Already Exists
-    Sending build context to Docker daemon  34.82kB
-
-
-    Step 1/6 : FROM matlabruntime/r2022a/release/update5/21000000000000000
-      ---> ad58363ceb4a
-    Step 2/6 : COPY ./applicationFilesForMATLABCompiler /usr/bin/mlrtapp
-      ---> d5bee0724803
-    Step 3/6 : RUN chmod -R a+rX /usr/bin/mlrtapp/*
-      ---> Running in fcfebc2cff44
-    Removing intermediate container fcfebc2cff44
-      ---> f1fafe2cc595
-    Step 4/6 : RUN useradd -ms /bin/bash appuser
-      ---> Running in fe85c3cc0c67
-    Removing intermediate container fe85c3cc0c67
-      ---> ff1ce2305910
-    Step 5/6 : USER appuser
-      ---> Running in 6b976bfd4b18
-    Removing intermediate container 6b976bfd4b18
-      ---> dc0fba8b0a53
-    Step 6/6 : ENTRYPOINT ["/opt/matlabruntime/v912/bin/glnxa64/muserve", "-a", "/usr/bin/mlrtapp/magicarchive.ctf"]
-      ---> Running in b686805c0d56
-    Removing intermediate container b686805c0d56
-      ---> 8ec697f512af
-    Successfully built 8ec697f512af
-    Successfully tagged sflorenz05/depsimmodstandappdocker/sample_wwtp_api:v0.1
-
     DOCKER CONTEXT LOCATION:
 
-    /home/ubuntu/DepSimModStandAppDocker/src/sflorenz05/depsimmodstandappdocker/sample_wwtpmicroserviceDockerImage
+    /home/usuario/DepSimModStandAppDocker/src/simple_simulink_proj/sflorenz05/depsimmodstandappdocker/simple_simulink_proj_api:v0.1microserviceDockerImage
 
 
     FOR HELP GETTING STARTED WITH MICROSERVICE IMAGES, PLEASE READ:
 
-    /home/ubuntu/DepSimModStandAppDocker/src/sflorenz05/depsimmodstandappdocker/sample_wwtpmicroserviceDockerImage/GettingStarted.txt
+    /home/usuario/DepSimModStandAppDocker/src/simple_simulink_proj/sflorenz05/depsimmodstandappdocker/simple_simulink_proj_api:v0.1microserviceDockerImage/GettingStarted.txt
     ```
 
 5. The function generates the following files within a folder named micro-magicmicroserviceDockerImage in your current working directory:
 
-   1. `sflorenz05/depsimmodstandappdocker/applicationFilesForMATLABCompiler/sample_wwtp.ctf` — Deployable archive file.
+   1. `sflorenz05/depsimmodstandappdocker/simple_simulink_proj_api:v0.1microserviceDockerImage/applicationFilesForMATLABCompiler/sample_wwtp.ctf` — Deployable archive file.
    2. `Dockerfile` — Docker file that specifies Docker run-time options.
    3. `GettingStarted.txt` — Text file that contains deployment information.
       - *See the packaging image*
 
-          |<img width="724" alt="dockerdep4" src="https://user-images.githubusercontent.com/6643905/216699339-be4c320f-2096-46fd-92f3-8fd26486f93a.PNG">|
+          |<img width="724" alt="dockerdep4" src="https://user-images.githubusercontent.com/6643905/217005316-5728b490-6e39-45ca-9192-42aa190cce54.png">|
           |:----------------------------------------:|
 
 6. Test the image:
@@ -154,14 +127,14 @@
     - Expected Output:
 
     ```console
-    REPOSITORY                                                        TAG       IMAGE ID CREATED             SIZE
-    sflorenz05/depsimmodstandappdocker/sample_wwtp_api:v0.1           latest    b02904c251da   33 minutes ago      3.28GB
+    REPOSITORY                                                    TAG       IMAGE ID       CREATED          SIZE
+    sflorenz05/depsimmodstandappdocker/simple_simulink_proj_api   v0.1      8d40abeea823   5 minutes ago    3.26GB
     ```
 
 7. Run the sflorenz05/depsimmodstandappdocker/sample_wwtp_api:v0.1 microservice image in Docker.
 
     ```console
-    docker run --rm -p 9900:9910 sflorenz05/depsimmodstandappdocker/sample_wwtp_api:v0.1
+    docker run --rm -p 9900:9910 sflorenz05/depsimmodstandappdocker/simple_simulink_proj_api:v0.1
     ```
 
 8. Once the microservice container is running in Docker, you can check the status of the service by opening the following URL in a web browser:
@@ -179,7 +152,7 @@
 9. Test the running service:
 
     ```console
-    curl -v -H Content-Type:application/json -d '{"nargout":1,"rhs":[]}' "http://localhost:9900/sample_wwtp/RunScript"
+    curl -v -H Content-Type:application/json -d '{"nargout":1,"rhs":[]}' "http://localhost:9900/simple_simulink_proj/RunScript"
     ```
 
     - Expected Output:
