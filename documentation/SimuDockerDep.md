@@ -5,7 +5,6 @@
 1. Clone the repository: `git clone https://github.com/sfl0r3nz05/DepSimModStandAppDocker.git`
 2. Go into the project folder `cd ~/DistributedBchFWArchIoT/src/simple_simulink_proj` using Matlab:
 
-    |        **Copied files**         |
     |:-------------------------------:|
     |![image](./images/RunScript.png) |
 
@@ -125,91 +124,20 @@
     - Expected Output:
 
     ```console
-    Generating Runtime Image
-    Runtime Base Image Already Exists
-    Cleaning MATLAB Runtime installer location. It may take several minutes...
-    Installing ...
-    (Nov 26, 2022 14:12:52) ##################################################################
-    (Nov 26, 2022 14:12:52) #
-    (Nov 26, 2022 14:12:52) # Today's Date: 
-    (Nov 26, 2022 14:12:52) Sat Nov 26 14:12:52 EST 2022
-    (Nov 26, 2022 14:12:52) 
-    (Nov 26, 2022 14:12:52) System Info
-    (Nov 26, 2022 14:12:52) OS: Linux 5.15.0-53-generic
-    (Nov 26, 2022 14:12:52) Arch: amd64
-    (Nov 26, 2022 14:12:52) Data Model: 64
-    (Nov 26, 2022 14:12:52) Language: en
-    (Nov 26, 2022 14:12:52) Java Vendor: Oracle Corporation
-    (Nov 26, 2022 14:12:52) Java Home: /tmp/ubuntu/matlabruntime/docker/r2022a/release/update5/installer/sys/java/jre/glnxa64/jre
-    (Nov 26, 2022 14:12:52) Java Version: 1.8.0_202
-    (Nov 26, 2022 14:12:52) Java VM Name: Java HotSpot(TM) 64-Bit Server VM
-    (Nov 26, 2022 14:12:52) Release Description: R2022a_Update_5
-    (Nov 26, 2022 14:12:52) Java Class Path: /tmp/ubuntu/matlabruntime/docker/r2022a/release/update5/installer/java/config/installagent/pathlist.jar
-    (Nov 26, 2022 14:12:52) User Name: ubuntu
-    (Nov 26, 2022 14:12:52) Current Directory: /home/ubuntu/matlab_model/RunScript
-    (Nov 26, 2022 14:12:52) Input arguments: 
-    (Nov 26, 2022 14:12:52) root /tmp/ubuntu/matlabruntime/docker/r2022a/release/update5/installer
-    (Nov 26, 2022 14:12:52) libdir /tmp/ubuntu/matlabruntime/docker/r2022a/release/update5/installer
-    (Nov 26, 2022 14:12:52) destinationFolder /tmp/ubuntu/matlabruntime/docker/r2022a/release/update5/e0000000000000200
-    (Nov 26, 2022 14:12:52) product.MATLAB_Runtime___Core true
-    (Nov 26, 2022 14:12:52) product.MATLAB_Runtime___Non_Interactive_MATLAB true
-    (Nov 26, 2022 14:12:52) product.MATLAB_Runtime___Numerics true
-    (Nov 26, 2022 14:12:52) product.MATLAB_Runtime___Rapid_Accelerator true
-    (Nov 26, 2022 14:12:52) agreeToLicense yes   
-    ............................................................................................................................................................
-    ............................................................................................................................................................
-    ............................................................................................................................................................
-
-    Step 1/3 : FROM matlabruntimebase/r2022a/release/update5
-     ---> d568a1ded9cd
-    Step 2/3 : COPY ./v912 /opt/matlabruntime/v912
-     ---> 7cf9de3ac93f
-    Step 3/3 : ENV LD_LIBRARY_PATH /opt/matlabruntime/v912/runtime/glnxa64:/opt/matlabruntime/v912/bin/glnxa64:/opt/matlabruntime/v912/sys/os/glnxa64:/opt/matlabruntime/v912/sys/  opengl/lib/glnxa64:/opt/matlabruntime/v912/extern/bin/glnxa64
-     ---> Running in 75b83a482187
-    Removing intermediate container 75b83a482187
-     ---> dc12891158c3
-    Successfully built dc12891158c3
-    Successfully tagged matlabruntime/r2022a/release/update5/e0000000000000200:latest
-    Sending build context to Docker daemon  292.9kB
-
-
-    Step 1/6 : FROM matlabruntime/r2022a/release/update5/e0000000000000200
-     ---> dc12891158c3
-    Step 2/6 : COPY ./applicationFilesForMATLABCompiler /usr/bin/mlrtapp
-     ---> 554cef186ab0
-    Step 3/6 : RUN chmod -R a+rX /usr/bin/mlrtapp/*
-     ---> Running in b8dd6cfc796e
-    Removing intermediate container b8dd6cfc796e
-     ---> c1c6e8b4a773
-    Step 4/6 : RUN useradd -ms /bin/bash appuser
-     ---> Running in 6582101336d3
-    Removing intermediate container 6582101336d3
-     ---> 1f006a5251a0
-    Step 5/6 : USER appuser
-     ---> Running in 2eed638f398c
-    Removing intermediate container 2eed638f398c
-     ---> dc1c7bd5d23e
-    Step 6/6 : ENTRYPOINT ["/usr/bin/mlrtapp/RunScript"]
-     ---> Running in 31002867e03a
-    Removing intermediate container 31002867e03a
-     ---> 819f8be5e2ac
-    Successfully built 819f8be5e2ac
-    Successfully tagged wwtp:latest
-
     DOCKER CONTEXT LOCATION:
 
-    /home/ubuntu/matlab_model/RunScript/wwtpdocker
+    /home/usuario/DepSimModStandAppDocker/src/simple_simulink_proj/sflorenz05/depsimmodstandappdocker/simple_simulink_proj:v0.1docker
 
     SAMPLE DOCKER RUN COMMAND:
 
-    docker run --rm -e "DISPLAY=:0" -v /tmp/.X11-unix:/tmp/.X11-unix wwtp
+    docker run --rm -e "DISPLAY=localhost:10.0" -v /tmp/.X11-unix:/tmp/.X11-unix sflorenz05/depsimmodstandappdocker/simple_simulink_proj:v0.1
 
-    EXECUTE xhost + ON THE HOST MACHINE TO VIEW CONTAINER GRAPHICS
+    EXECUTE xhost + ON THE HOST MACHINE TO VIEW CONTAINER GRAPHICS.
     ```
 
     |     **Matlab Project Overview**     |
     |:-----------------------------------:|
-    |  ![image](./images/FullDeploy.png)  |
+    |  ![image](https://user-images.githubusercontent.com/6643905/216982610-1b7d9722-700c-49da-ab6e-47ffe5a80643.png)  |
 
 7. Test the Docker Image
 
