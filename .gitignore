@@ -2,7 +2,7 @@
 /src/sample-wwtp/*.slxc
 /src/sample-wwtp/RunScriptstandaloneApplication/
 src/sample-wwtp/slprj/
-/src/sample-wwtp/Remedy_WWTP_OL_FMU_2021b.slx.autosave
+/src/sample-wwtp/*.slx.autosave
 /src/sample-wwtp/RunScript.asv
 /src/sample-wwtp/micro-magicmicroserviceDockerImage/
 /src/sample-wwtp/sample_wwtpmicroserviceDockerImage/
@@ -12,3 +12,5 @@ src/sample-wwtp/slprj/
 /src/simple_simulink_proj/*.slxc
 /src/simple_simulink_proj/RunScriptstandaloneApplication/
 /src/simple_simulink_proj/sflorenz05/
+/src/simple_simulink_proj/*.slx.autosave
+/src/simple_simulink_proj/simple_simulink_projproductionServerArchive/*
