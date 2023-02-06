@@ -34,7 +34,7 @@ This tutorial help to compile and containerize the next Simulink Project:
     |![image](https://user-images.githubusercontent.com/6643905/217029496-c789358c-5ec7-4a27-b8cc-e002143f9639.png)|
 
 
-5. Run the `iniSim`: `IniSim()`
+5. Run the `iniSim` fuction: `IniSim()`
 
     - Expected Output:
 
@@ -45,6 +45,52 @@ This tutorial help to compile and containerize the next Simulink Project:
 
          1
     ```
+
+6. Run the `RunSim` function: `RunSim(5,2)`
+
+    - Expected Output:
+
+    ```console
+    >> RunSim(5,2)
+    ### Building the rapid accelerator target for model: Modelo_Simulink_2021b
+    ### Successfully built the rapid accelerator target for model: Modelo_Simulink_2021b
+
+    Build Summary
+
+    Top model rapid accelerator targets built:
+
+    Model                  Action                       Rebuild Reason                                    
+    ======================================================================================================
+    Modelo_Simulink_2021b  Code generated and compiled  Code generation information file does not exist.  
+
+    1 of 1 models built (0 models already up to date)
+    Build duration: 0h 0m 3.9714s
+
+    ans =
+
+             0         0
+        0.0100    0.0040
+        0.0200    0.0146
+        0.0300    0.0302
+        0.0400    0.0491
+        0.0500    0.0704
+        0.0600    0.0930
+        0.0700    0.1163
+        0.0800    0.1396
+        0.0900    0.1626
+        0.1000    0.1848
+        0.1100    0.2061
+        0.1200    0.2263
+        0.1300    0.2452
+        0.1400    0.2627
+        0.1500    0.2790
+        0.1600    0.2938
+        0.1700    0.3073
+        0.1800    0.3195
+        0.1900    0.3305
+        ......    ......
+    ```
+
 
 6. Compile the Matlab S-Function:
 
