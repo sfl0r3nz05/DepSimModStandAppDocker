@@ -2,29 +2,15 @@
 
 ## Create the Docker container **[On the VM where Matlab is installed]**
 
-1. Create a folder for the model deployment: `mkdir ~/matlab_model/RunScript`.
-2. Clone this repository.
-3. Go to the project folder: `cd ~/DepSimModStandAppDocker/src/simple_simulink_proj`.
-4. Copy the `.slx` and `.m`. *See copied files image*.
-
-    ```console
-    cp ~/DepSimModStandAppDocker/src/simple_simulink_proj/*.slx ~/matlab_model/RunScript
-    cp ~/DepSimModStandAppDocker/src/simple_simulink_proj/*.m ~/matlab_model/RunScript
-    ```
+1. Clone the repository: `git clone https://github.com/sfl0r3nz05/DepSimModStandAppDocker.git`
+2. Go into the project folder `cd ~/DistributedBchFWArchIoT/src/simple_simulink_proj` using Matlab:
 
     |        **Copied files**         |
     |:-------------------------------:|
     |![image](./images/RunScript.png) |
 
-5. Open Matlab considering same folder established in the [installation tutorial](./MatlabOnLinux.md):
-
-    ```console
-    cd ~/MATLAB/R2022a/bin/
-    ./matlab
-    ```
-
-6. Go to the `RunScript` folder inside of Matlab.
-7. Test the `RunScript` function on the Matlab cmd:
+3. Go to the `RunScript` folder inside of Matlab.
+4. Test the `RunScript` function on the Matlab cmd:
 
     ```console
     RunScript()
@@ -66,7 +52,7 @@
         ......    ......        
     ```
 
-8. Launch the `RunScript.m` compilation:
+5. Launch the `RunScript.m` compilation:
 
     ```console
     res = compiler.build.standaloneApplication('RunScript.m', 'TreatInputsAsNumeric', true)
@@ -99,7 +85,7 @@
                         Options: [1×1 compiler.build.StandaloneApplicationOptions]       
     ```
 
-9. Package Standalone Application into Docker Image:
+6. Package Standalone Application into Docker Image:
 
     ```console
     opts = compiler.package.DockerOptions(res, 'ImageName', 'wwtp')
@@ -118,7 +104,7 @@
              DockerContext: './wwtpdocker'       
     ```
 
-10. Create a Docker Image
+7. Create a Docker Image
 
     ```console
     compiler.package.docker(res, 'Options', opts)
@@ -213,7 +199,7 @@
     |:-----------------------------------:|
     |  ![image](./images/FullDeploy.png)  |
 
-7. Test the Docker Image
+8. Test the Docker Image
 
     ```console
     docker images
