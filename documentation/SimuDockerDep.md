@@ -18,7 +18,6 @@
     - Expected Output:
 
     ```console
-    >> RunScript()
     ### Building the rapid accelerator target for model: Modelo_Simulink_2021b
     ### Successfully built the rapid accelerator target for model: Modelo_Simulink_2021b
 
@@ -31,24 +30,37 @@
     Modelo_Simulink_2021b  Code generated and compiled  Code generation information file does not exist.  
 
     1 of 1 models built (0 models already up to date)
-    Build duration: 0h 0m 25.231s
+    Build duration: 0h 0m 8.0539s
 
     ans =
-
-             0         0
-        0.0100    0.0040
-        0.0200    0.0146
-        0.0300    0.0302
-        0.0400    0.0491
-        0.0500    0.0704
-        0.0600    0.0930
-        0.0700    0.1163
-        0.0800    0.1396
-        0.0900    0.1626
-        0.1000    0.1848
-        ......    ......
-        ......    ......
-        ......    ......        
+         0         0
+    0.0100    0.0040
+    0.0200    0.0146
+    0.0300    0.0302
+    0.0400    0.0491
+    0.0500    0.0704
+    0.0600    0.0930
+    0.0700    0.1163
+    0.0800    0.1396
+    0.0900    0.1626
+    0.1000    0.1848
+    0.1100    0.2061
+    0.1200    0.2263
+    0.1300    0.2452
+    0.1400    0.2627
+    0.1500    0.2790
+    0.1600    0.2938
+    0.1700    0.3073
+    0.1800    0.3195
+    0.1900    0.3305
+    0.2000    0.3402
+    0.2100    0.3488
+    0.2200    0.3563
+    0.2300    0.3629
+    0.2400    0.3684
+    0.2500    0.3732
+   ...        ...
+             
     ```
 
 4. Launch the `RunScript.m` compilation:
