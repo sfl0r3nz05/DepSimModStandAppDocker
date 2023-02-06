@@ -5,6 +5,10 @@
 
    <img width="960" alt="dockerdep4" src="https://user-images.githubusercontent.com/6643905/216677558-f146bf23-0921-408d-8245-08d07cefc671.PNG">
 
+  > **Note:** Pre-requisite:
+  >> It is required that the model has been previously deployed in a container.
+  >> It is recommended that you have previously followed the instructions [to build the model in the Docker container](./SimS-FunctDockerDep.md).
+
 3. Create Deployable Archive
 
    - Creates a deployable archive with options specified
