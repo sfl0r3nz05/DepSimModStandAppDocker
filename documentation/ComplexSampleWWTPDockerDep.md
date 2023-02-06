@@ -92,92 +92,34 @@ This tutorial help to compile and containerize the next Simulink Project:
     ```
 
 
-6. Compile the Matlab S-Function:
+7. Launch the `RunScript.m` compilation including the `AdditionalFiles` property:
 
     ```console
-    mex DN_PROCESS.c
+    res = compiler.build.standaloneApplication('RunSim.m', 'TreatInputsAsNumeric', true, 'AdditionalFiles', ["IniSim.m","ini_Params.m"])
     ```
 
     - Expected Output:
 
     ```console
-    Building with 'gcc'.
-    Mex completed successfully.
-    ```
-
-    - The output file: `DN_process.mexa64` is generated.
-
-7. Load in Matlab environment the ini_DN.m variables:
-
-    ```console
-    ini_DN
-    ```
-
-    - Expected Output:
-
-    ![img](./images/ini_DN.png)
-
-8. Open the `.slx` file in Simulink and *Run* it in order to generate the `slprj` folder.
-
-    - Expected Output:
-
-    ![img](./images/slprj.png)
-
-    - Close the window after the simulation finish.
-
-9. Test the `RunScript` function on the Matlab cmd:
-
-    ```console
-    RunScript()
-    ```
-
-    - Expected Output:
-
-    ```console
-    >> RunScript()
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    0.0012
-    ......
-    ......
-    ......
-    ```
-
-10. Launch the `RunScript.m` compilation including the `AdditionalFiles` property:
-
-    ```console
-    res = compiler.build.standaloneApplication('RunScript.m', 'TreatInputsAsNumeric', true, 'AdditionalFiles', ["ini_DN.m","Input_Data.mat"])
-    ```
-
-    - Expected Output:
-
-    ```console
+    ### Building the rapid accelerator target for model: Modelo_Simulink_2021b
+    ### Successfully built the rapid accelerator target for model: Modelo_Simulink_2021b
 
     Build Summary
 
-    0 of 1 models built (1 models already up to date)
-    Build duration: 0h 0m 3.5325s
+    Top model rapid accelerator targets built:
+
+    Model                  Action                       Rebuild Reason                                    
+    ======================================================================================================
+    Modelo_Simulink_2021b  Code generated and compiled  Code generation information file does not exist.  
+
+    1 of 1 models built (0 models already up to date)
+    Build duration: 0h 0m 5.1664s
 
     res = 
 
-    Results with properties:
+      Results with properties:
 
-                      BuildType: 'standaloneApplication'
+                     BuildType: 'standaloneApplication'
                           Files: {3×1 cell}
         IncludedSupportPackages: {}
                         Options: [1×1 compiler.build.StandaloneApplicationOptions]
