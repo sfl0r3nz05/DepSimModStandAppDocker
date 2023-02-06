@@ -6,18 +6,14 @@ This tutorial help to compile and containerize the next Simulink Project:
 
 ## Create the Docker container **[On the VM where Matlab is installed]**
 
-1. Clone this repository.
-2. Go to the `src` folder: `cd ~/DepSimModStandAppDocker/src`.
-3. Copy the `sample-wwtp` folder in the `~/matlab_model/` folder: `cp ./sample-wwtp ~/matlab_model/`.
-4. Open Matlab considering same folder established in the [installation tutorial](./MatlabOnLinux.md):
+1. Clone the repository: `git clone https://github.com/sfl0r3nz05/DepSimModStandAppDocker.git`
+2. Go into the project folder `cd ~/DistributedBchFWArchIoT/src/sample-wwtp` using Matlab:
 
-    ```console
-    cd ~/MATLAB/R2022a/bin/
-    ./matlab
-    ```
+    | |
+    |:---------:|
+    |![image](https://user-images.githubusercontent.com/6643905/217015426-3a7e866d-2ff3-45bb-ad73-f0e7aab75be4.png)|
 
-5. Go to the `sample-wwtp` folder inside of Matlab.
-6. Compile the Matlab S-Function:
+3. Compile the Matlab S-Function:
 
     ```console
     mex DN_PROCESS.c
