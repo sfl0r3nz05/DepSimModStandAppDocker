@@ -15,8 +15,7 @@
 
     ```console
     opts = compiler.build.ProductionServerArchiveOptions('RunScript.m',...
-    'ArchiveName','sample_wwtp',...
-    'AdditionalFiles',["ini_DN.m","Input_Data.mat"],...
+    'ArchiveName','simple_simulink_proj',...
     'AutoDetectDataFiles','on',...
     'Verbose','on')
     ```
@@ -28,14 +27,14 @@
 
     ProductionServerArchiveOptions with properties:
 
-              ArchiveName: 'sample_wwtp'
-           FunctionFiles: {'/home/usuario/DepSimModStandAppDocker/src/sample-wwtp/RunScript.m'}
+              ArchiveName: 'simple_simulink_proj'
+           FunctionFiles: {'/home/usuario/DepSimModStandAppDocker/src/simple_simulink_proj/RunScript.m'}
        FunctionSignatures: ''
-          AdditionalFiles: {'/home/usuario/DepSimModStandAppDocker/src/sample-wwtp/Input_Data.mat'}
+          AdditionalFiles: {}
       AutoDetectDataFiles: on
           SupportPackages: {'autodetect'}
                   Verbose: on
-                OutputDir: './sample_wwtpproductionServerArchive'
+                OutputDir: './simple_simulink_projproductionServerArchive'
     ```
 
    - Package the `RunScript` function into a deployable archive using the [compiler.build.productionServerArchive](https://es.mathworks.com/help/compiler_sdk/mps_dev_test/compiler.build.productionserverarchive.html) function.
