@@ -99,20 +99,21 @@
 5. Package Standalone Application into Docker Image:
 
     ```console
-    opts = compiler.package.DockerOptions(res, 'ImageName', 'wwtp')
+    opts = compiler.package.DockerOptions(res, 'ImageName', 'sflorenz05/depsimmodstandappdocker/simple_simulink_proj:v0.1')
     ```
 
     - Expected Output:
 
     ```console
+
     opts = 
 
       DockerOptions with properties:
 
-                EntryPoint: 'RunScript'
+              EntryPoint: 'RunScript'
         ExecuteDockerBuild: on
-                 ImageName: 'wwtp'
-             DockerContext: './wwtpdocker'       
+                 ImageName: 'sflorenz05/depsimmodstandappdocker/simple_simulink_proj:v0.1'
+            DockerContext: './sflorenz05/depsimmodstandappdocker/simple_simulink_proj:v0.1docker'
     ```
 
 6. Create a Docker Image
