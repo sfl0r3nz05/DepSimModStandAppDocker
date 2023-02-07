@@ -18,3 +18,5 @@ src/sample-wwtp/slprj/
 /src/complex-sample-wwtp/slprj/
 /src/complex-sample-wwtp/RunSimstandaloneApplication/
 /src/complex-sample-wwtp/sflorenz05/
+/src/complex-sample-wwtp/*.autosave
+/src/complex-sample-wwtp/complex_sample_wwtpproductionServerArchive/
