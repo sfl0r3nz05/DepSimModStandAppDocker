@@ -35,5 +35,4 @@ The following repository is intended to document the procedure to deploy a Simul
 
 ## To-do
 
-1. [Deploy the Docker Container for a Real WWTP Model](https://es.mathworks.com/help/compiler_sdk/mps_dev_test/create-a-microservice-docker-image.html)
-2. [Create Microservice Docker Image for a Real WWTP Model](https://es.mathworks.com/help/compiler_sdk/mps_dev_test/create-a-microservice-docker-image.html)
+
