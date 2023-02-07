@@ -175,5 +175,5 @@ This tutorial help to compile and containerize the next Simulink Project:
 11. Test the container
 
     ```console
-    docker run --rm -e "DISPLAY=localhost:10.0" -v /tmp/.X11-unix:/tmp/.X11-unix sflorenz05/depsimmodstandappdocker/complex_sample_wwtp:v0.1 --logs
+    docker run --rm -e "DISPLAY=localhost:10.0" -v /tmp/.X11-unix:/tmp/.X11-unix sflorenz05/depsimmodstandappdocker/complex_sample_wwtp:v0.1
     ```
