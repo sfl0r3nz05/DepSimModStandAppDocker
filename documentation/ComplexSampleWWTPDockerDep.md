@@ -171,3 +171,9 @@ This tutorial help to compile and containerize the next Simulink Project:
     | |
     |:---------:|
     |![image](https://user-images.githubusercontent.com/6643905/217174215-0225c53d-4ec2-4453-bc5e-6cc1ee3d3e1a.png)|
+
+11. Test the container
+
+    ```console
+    docker run --rm -e "DISPLAY=localhost:10.0" -v /tmp/.X11-unix:/tmp/.X11-unix sflorenz05/depsimmodstandappdocker/complex_sample_wwtp:v0.1 --logs
+    ```

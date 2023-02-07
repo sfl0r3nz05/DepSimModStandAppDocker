@@ -13,4 +13,6 @@ function y_out = RunSim(P_in, I_in)
         y_out = out.Results;
     else
         y_out = -1;
+
+    disp(y_out)
 end
