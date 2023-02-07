@@ -35,7 +35,7 @@ This tutorial help to compile and containerize the next Simulink Project:
 
     | |
     |:---------:|
-    |[image](https://user-images.githubusercontent.com/6643905/217171619-7a598f0b-cdde-4eea-92ec-fb2f3b341b76.png)|
+    |![image](https://user-images.githubusercontent.com/6643905/217171619-7a598f0b-cdde-4eea-92ec-fb2f3b341b76.png)|
 
 
 5. Run the `IniSim` fuction: `IniSim()`
@@ -170,4 +170,4 @@ This tutorial help to compile and containerize the next Simulink Project:
 
     | |
     |:---------:|
-    |[image](https://user-images.githubusercontent.com/6643905/217174215-0225c53d-4ec2-4453-bc5e-6cc1ee3d3e1a.png)|
+    |![image](https://user-images.githubusercontent.com/6643905/217174215-0225c53d-4ec2-4453-bc5e-6cc1ee3d3e1a.png)|
