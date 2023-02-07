@@ -16,7 +16,7 @@ This tutorial help to compile and containerize the next Simulink Project:
 3. Initialize project variables
 
     ```console
-    ini_Param()
+    ini_Params()
     ```
 
     - Expected Output:
@@ -25,7 +25,7 @@ This tutorial help to compile and containerize the next Simulink Project:
     |:---------:|
     |![image](https://user-images.githubusercontent.com/6643905/217027278-5698ea81-b132-4658-8515-34b88980f911.png)|
 
-4. Open Simulink project: `Modelo_Simulink_WWTP_2021b.slx`
+4. Open Simulink project: `Modelo_Simulink_WWTP_2021b.slx` and run it
 
     - Expected Output:
 
@@ -33,8 +33,12 @@ This tutorial help to compile and containerize the next Simulink Project:
     |:---------:|
     |![image](https://user-images.githubusercontent.com/6643905/217029496-c789358c-5ec7-4a27-b8cc-e002143f9639.png)|
 
+    | |
+    |:---------:|
+    |[image](https://user-images.githubusercontent.com/6643905/217171619-7a598f0b-cdde-4eea-92ec-fb2f3b341b76.png)|
 
-5. Run the `iniSim` fuction: `IniSim()`
+
+5. Run the `IniSim` fuction: `IniSim()`
 
     - Expected Output:
 
@@ -52,19 +56,10 @@ This tutorial help to compile and containerize the next Simulink Project:
 
     ```console
     >> RunSim(5,2)
-    ### Building the rapid accelerator target for model: Modelo_Simulink_2021b
-    ### Successfully built the rapid accelerator target for model: Modelo_Simulink_2021b
-
     Build Summary
 
-    Top model rapid accelerator targets built:
-
-    Model                  Action                       Rebuild Reason                                    
-    ======================================================================================================
-    Modelo_Simulink_2021b  Code generated and compiled  Code generation information file does not exist.  
-
-    1 of 1 models built (0 models already up to date)
-    Build duration: 0h 0m 3.9714s
+    0 of 1 models built (1 models already up to date)
+    Build duration: 0h 0m 1.1454s
 
     ans =
 
@@ -92,7 +87,7 @@ This tutorial help to compile and containerize the next Simulink Project:
     ```
 
 
-7. Launch the `RunScript.m` compilation including the `AdditionalFiles` property:
+7. Launch the `RunSim.m` compilation including the `AdditionalFiles` property:
 
     ```console
     res = compiler.build.standaloneApplication('RunSim.m', 'TreatInputsAsNumeric', true, 'AdditionalFiles', ["IniSim.m","ini_Params.m"])
@@ -101,50 +96,50 @@ This tutorial help to compile and containerize the next Simulink Project:
     - Expected Output:
 
     ```console
-    ### Building the rapid accelerator target for model: Modelo_Simulink_2021b
-    ### Successfully built the rapid accelerator target for model: Modelo_Simulink_2021b
+    ### Building the rapid accelerator target for model: Modelo_Simulink_WWTP_2021b
+    ### Successfully built the rapid accelerator target for model: Modelo_Simulink_WWTP_2021b
 
     Build Summary
 
     Top model rapid accelerator targets built:
 
-    Model                  Action                       Rebuild Reason                                    
-    ======================================================================================================
-    Modelo_Simulink_2021b  Code generated and compiled  Code generation information file does not exist.  
+    Model                       Action                       Rebuild Reason                                    
+    ===========================================================================================================
+    Modelo_Simulink_WWTP_2021b  Code generated and compiled  Code generation information file does not exist.  
 
     1 of 1 models built (0 models already up to date)
-    Build duration: 0h 0m 5.1664s
+    Build duration: 0h 0m 4.7637s
 
     res = 
 
       Results with properties:
 
-                     BuildType: 'standaloneApplication'
-                          Files: {3×1 cell}
+                      BuildType: 'standaloneApplication'
+                         Files: {3×1 cell}
         IncludedSupportPackages: {}
                         Options: [1×1 compiler.build.StandaloneApplicationOptions]
     ```
 
-11. Package Standalone Application into Docker Image:
+8. Package Standalone Application into Docker Image:
 
     ```console
-    opts = compiler.package.DockerOptions(res, 'ImageName', 'sflorenz05/depsimmodstandappdocker/sample_wwtp')
+    opts = compiler.package.DockerOptions(res, 'ImageName', 'sflorenz05/depsimmodstandappdocker/complex_sample_wwtp:v0.1')
     ```
 
     - Expected Output:
 
     ```console
-    opts =
+    opts = 
 
       DockerOptions with properties:
 
-                EntryPoint: 'RunScript'
+                EntryPoint: 'RunSim'
         ExecuteDockerBuild: on
-                 ImageName: 'sflorenz05/depsimmodstandappdocker/wwtp'
-             DockerContext: './sflorenz05/depsimmodstandappdocker/sample_wwtpdocker'
+                 ImageName: 'sflorenz05/depsimmodstandappdocker/complex_sample_wwtp:v0.1'
+             DockerContext: './sflorenz05/depsimmodstandappdocker/complex_sample_wwtp:v0.1docker'
     ```
 
-12. Create a Docker Image
+9. Create a Docker Image
 
     ```console
     compiler.package.docker(res, 'Options', opts)
@@ -160,42 +155,19 @@ This tutorial help to compile and containerize the next Simulink Project:
     Sending build context to Docker daemon   11.1MB
 
 
-    Step 1/6 : FROM matlabruntime/r2022a/release/update5/e0000000000000200
-     ---> dc12891158c3
-    Step 2/6 : COPY ./applicationFilesForMATLABCompiler /usr/bin/mlrtapp
-     ---> 4f44e9169b92
-    Step 3/6 : RUN chmod -R a+rX /usr/bin/mlrtapp/*
-     ---> Running in 6b4a3b40dcc5
-    Removing intermediate container 6b4a3b40dcc5
-     ---> 4c7c29a2253f
-    Step 4/6 : RUN useradd -ms /bin/bash appuser
-     ---> Running in bea321274686
-    Removing intermediate container bea321274686
-     ---> 93744760564e
-    Step 5/6 : USER appuser
-     ---> Running in 5abe48e76ae1
-    Removing intermediate container 5abe48e76ae1
-     ---> a1b25420b905
-    Step 6/6 : ENTRYPOINT ["/usr/bin/mlrtapp/RunScript"]
-     ---> Running in 99ad37ccca31
-    Removing intermediate container 99ad37ccca31
-     ---> 63eff14be9e5
-    Successfully built 63eff14be9e5
-    Successfully tagged sflorenz05/wwtp:latest
-
     DOCKER CONTEXT LOCATION:
 
-    /home/ubuntu/matlab_model/TestSFunction/sflorenz05/wwtpdocker
+    /home/usuario/DepSimModStandAppDocker/src/complex-sample-wwtp/sflorenz05/depsimmodstandappdocker/complex_sample_wwtp:v0.1docker
 
     SAMPLE DOCKER RUN COMMAND:
 
-    docker run --rm -e "DISPLAY=:0" -v /tmp/.X11-unix:/tmp/.X11-unix sflorenz05/wwtp
+    docker run --rm -e "DISPLAY=localhost:10.0" -v /tmp/.X11-unix:/tmp/.X11-unix sflorenz05/depsimmodstandappdocker/complex_sample_wwtp:v0.1
 
-    EXECUTE xhost + ON THE HOST MACHINE TO VIEW CONTAINER GRAPHICS.
+    EXECUTE xhost + ON THE HOST MACHINE TO VIEW CONTAINER GRAPHICS
     ```
 
-13. Command window sample:
+10. Command window sample:
 
-    |        ![img](./images/full_proj.png)        |
-    |:--------------------------------------------:|
-    |          **Full Project Overview**           |
+    | |
+    |:---------:|
+    |[image](https://user-images.githubusercontent.com/6643905/217174215-0225c53d-4ec2-4453-bc5e-6cc1ee3d3e1a.png)|
