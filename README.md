@@ -14,16 +14,17 @@ The following repository is intended to document the procedure to deploy a Simul
 |<img src="./documentation/images/CompilerToDocker.png"  width=60% height=60%>|
 |:---------------------------------------------------------------------------:|
 
-1. [Basic function](./documentation/BasicFunctionDocker.md). **[Optional: only for testing purposes]**
-2. [Deploy Simulink Model](./documentation/SimuDockerDep.md). **[Optional: only for testing purposes]**.
-3. [Deploy Simulink Model with S-Fuctions](./documentation/SimS-FunctDockerDep.md). **[Optional: only for testing purposes]**
-4. [Deploy a more complex Simulink Model with S-Functions](./documentation/ComplexSampleWWTPDockerDep.md). **[Required]**)
+1. [Built a Basic function on Docker](./documentation/BasicFunctionDocker.md). **[Optional: only for testing purposes]**
+2. [Built a Simulink Model on Docker](./documentation/SimuDockerDep.md). **[Optional: only for testing purposes]**.
+3. [Built a Simulink Model with S-Fuctions on Docker](./documentation/SimS-FunctDockerDep.md). **[Optional: only for testing purposes]**
+4. [Built a  more complex Simulink Model with S-Functions on Docker](./documentation/ComplexSampleWWTPDockerDep.md). **[Required]**
 
 ## III. From compiler to Microservice
 
-1. [Basic function](./documentation/BasicFunctionRESTDocker.md). **[Optional: only for testing purposes]**
-2. [Simulink Model](./documentation/SimuRESTDocker.md). **[Optional: only for testing purposes]**.
-3. [Simulink Model with S-Fuctions](./documentation/SimS-FunctRESTDocker.md). **[Required]**
+1. [Microservice of a Basic function](./documentation/BasicFunctionRESTDocker.md). **[Optional: only for testing purposes]**
+2. [Microservice of a basic Simulink Model](./documentation/SimuRESTDocker.md). **[Optional: only for testing purposes]**.
+3. [Microservice of a Simulink Model with S-Fuctions](./documentation/SimS-FunctRESTDocker.md). **[Optional: only for testing purposes]**
+4. [Microservice of a more complex Simulink Model with S-Fuctions](./documentation/ComplexSampleWWTPRESTDocker.md). **[Required]**
 
 |<img src="./documentation/images/CompilerToRESTToDocker.png"  width=80% height=80%>|
 |:---------------------------------------------------------------------------------:|
